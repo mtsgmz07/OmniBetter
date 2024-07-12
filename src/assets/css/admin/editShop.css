@@ -1,0 +1,294 @@
+@import url("/more.css");
+
+main {
+    padding: 0 250px 100px 250px;
+}
+
+small:empty,
+label:empty {
+    display: none;
+}
+
+.filepond--credits {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+}
+
+.small__form__filepond {
+    margin-bottom: 10px;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+    overflow: auto;
+}
+
+.body__main__path::-webkit-scrollbar {
+    height: 2px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__deleteDesktop {
+    background-color: var(--red);
+    border-radius: 5px;
+    padding: 15px 0;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: all .1s linear;
+}
+
+.body__main__deleteDesktop:hover {
+    transform: translateY(-5px);
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__editDesktop__information__manager__selectCategory {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+.body__main__editDesktop__information__manager__selectCategory {
+    width: 100%;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a4046;
+    color: #fff;
+    height: 60px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder__content {
+    background-color: transparent;
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder__content p {
+    font-size: 18px;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__placeholder__content i.active {
+    transform: rotate(180deg);
+}
+
+.body__main__editDesktop__information__manager__selectCategory__select {
+    position: absolute;
+    top: 115%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #3a4046;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    z-index: 99;
+    background-color: #495057;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__select.active {
+    display: flex;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__select span {
+    padding: 10px;
+    text-align: center;
+    transition: all .1s linear;
+    background-color: #3a4046;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.body__main__editDesktop__information__manager__selectCategory__select span:hover {
+    background-color: #ffffff5e;
+}
+
+.body__main__editDesktop__image__h2,
+.body__main__editDesktop__information__h2,
+.body__main__editDesktop__component__h2,
+.body__main__editDesktop__game__h2 {
+    font-size: 40px;
+    color: var(--orange);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.body__main__editDesktop__image__check,
+.body__main__editDesktop__information__check,
+.body__main__editDesktop__component__check,
+.body__main__editDesktop__game__check {
+    background-color: var(--green);
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    height: 0;
+    transition: all .1s linear;
+    overflow: hidden;
+}
+
+.body__main__editDesktop__image__check.active,
+.body__main__editDesktop__information__check.active,
+.body__main__editDesktop__component__check.active,
+.body__main__editDesktop__game__check.active {
+    height: 100%;
+    overflow: auto;
+    padding: 15px 0;
+    margin: 10px 0;
+}
+
+.body__main__editDesktop__component__error,
+.body__main__editDesktop__game__error {
+    background-color: var(--red);
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    height: 0;
+    transition: all .1s linear;
+    overflow: hidden;
+}
+
+.body__main__editDesktop__component__error.active,
+.body__main__editDesktop__game__error.active {
+    height: 100%;
+    overflow: auto;
+    padding: 15px 0;
+    margin: 10px 0;
+}
+
+
+.body__main__editDesktop__verticalSeparation {
+    height: 1px;
+    width: 100%;
+    background-color: #ffffff21;
+    margin: 50px 0;
+}
+
+.body__main__editDesktop__information__manager {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.body__main__editDesktop__component__manager,
+.body__main__editDesktop__game__manager {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 15px 30px;
+    margin-bottom: 30px;
+}
+
+.body__main__editDesktop__image__submit button,
+.body__main__editDesktop__information__submit button,
+.body__main__editDesktop__component__manager__submit button,
+.body__main__editDesktop__game__manager__submit button {
+    background-color: var(--orange);
+    border-radius: 5px;
+    padding: 15px 0;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    transition: all .1s linear;
+}
+
+.body__main__editDesktop__image__submit button:disabled,
+.body__main__editDesktop__information__submit button:disabled,
+.body__main__editDesktop__component__manager__submit button:disabled,
+.body__main__editDesktop__game__manager__submit button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__editDesktop__image__submit button:not(:disabled):hover,
+.body__main__editDesktop__information__submit button:not(:disabled):hover,
+.body__main__editDesktop__component__manager__submit button:not(:disabled):hover,
+.body__main__editDesktop__game__manager__submit button:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 100px 15px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .body__main__editDesktop__component__manager,
+    .body__main__editDesktop__game__manager {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}

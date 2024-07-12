@@ -1,0 +1,43 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Panel Administrateur OmniBetter" ,
+  css: "admin/home" } }) %>
+
+<main class="active">
+  <div class="body__main__title">
+    <h1 class="body__main__title__h1">Espace administrateur</h1>
+  </div>
+
+  <section class="body__main__admin">
+    <a href="/admin/command" class="body__main__admin__container">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <h3>Commandes</h3>
+      <p>Accédez en temps réel à l'ensemble des commandes ainsi qu'à leur gestion.</p>
+    </a>
+    <a href="/admin/contact" class="body__main__admin__container">
+      <i class="fa-solid fa-envelope"></i>
+      <h3>Contact</h3>
+      <p>Accédez au formulaire de contact envoyé ainsi qu'à leur gestion.</p>
+    </a>
+    <a href="/admin/user" class="body__main__admin__container">
+      <i class="fa-solid fa-user"></i>
+      <h3>Utilisateurs</h3>
+      <p>Accédez aux utilisateurs ainsi qu'à leur gestion.</p>
+    </a>
+    <a href="/admin/shop" class="body__main__admin__container">
+      <i class="fa-solid fa-shop"></i>
+      <h3>Boutique</h3>
+      <p>Accédez à la boutique ainsi qu'à la gestion des articles.</p>
+    </a>
+    <a href="/admin/promotion" class="body__main__admin__container">
+      <i class="fa-solid fa-gift"></i>
+      <h3>Promotion</h3>
+      <p>Accédez aux promotions ainsi qu'à leur gestion.</p>
+    </a>
+    <a href="/admin/archivement" class="body__main__admin__container">
+      <i class="fa-solid fa-palette"></i>
+      <h3>Nos réalisations</h3>
+      <p>Accédez aux réalisations ainsi qu'à leur gestion.</p>
+    </a>
+  </section>
+</main>
+
+<%- include('../base/footer') %>

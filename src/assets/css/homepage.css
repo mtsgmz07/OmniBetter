@@ -1,0 +1,603 @@
+main {
+    box-sizing: border-box;
+}
+
+.body__main__presentation {
+    margin: 0 250px;
+}
+
+
+.body__main__presentation img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__bestseller,
+.body__main__gamingComputer {
+    margin: 100px 250px 0 250px;
+}
+
+.body__main__bestseller__title,
+.body__main__gamingComputer__title {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.body__main__bestseller__title span,
+.body__main__gamingComputer__title span {
+    color: var(--orange);
+}
+
+.body__main__bestseller__manager,
+.body__main__gamingComputer__manager {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 20px;
+}
+
+
+.body__main__bestseller__manager__container,
+.body__main__gamingComputer__manager__container {
+    border: 2px solid #00000033;
+    padding: 40px 30px;
+    border-radius: 25px;
+    transition: all .2s linear;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__bestseller__manager__container:hover,
+.body__main__gamingComputer__manager__container:hover {
+    border: 2px solid var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__bestseller__manager__container__article__picture,
+.body__main__gamingComputer__manager__container__article__picture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.body__main__bestseller__manager__container__article__picture img,
+.body__main__gamingComputer__manager__container__article__picture img {
+    height: 250px;
+    width: auto;
+}
+
+.body__main__bestseller__manager__container__article__title,
+.body__main__gamingComputer__manager__container__article__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.body__main__bestseller__manager__container__article__configuration,
+.body__main__gamingComputer__manager__container__article__configuration {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.body__main__bestseller__manager__container__article__configuration__cpu,
+.body__main__bestseller__manager__container__article__configuration__gpu,
+.body__main__bestseller__manager__container__article__configuration__ram,
+.body__main__bestseller__manager__container__article__configuration__ssd,
+.body__main__gamingComputer__manager__container__article__configuration__cpu,
+.body__main__gamingComputer__manager__container__article__configuration__gpu,
+.body__main__gamingComputer__manager__container__article__configuration__ram,
+.body__main__gamingComputer__manager__container__article__configuration__ssd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.body__main__bestseller__manager__container__article__configuration__cpu img,
+.body__main__bestseller__manager__container__article__configuration__gpu img,
+.body__main__bestseller__manager__container__article__configuration__ram img,
+.body__main__bestseller__manager__container__article__configuration__ssd img,
+.body__main__gamingComputer__manager__container__article__configuration__cpu img,
+.body__main__gamingComputer__manager__container__article__configuration__gpu img,
+.body__main__gamingComputer__manager__container__article__configuration__ram img,
+.body__main__gamingComputer__manager__container__article__configuration__ssd img {
+    height: 22px;
+    width: auto;
+}
+
+.body__main__bestseller__manager__container__article__price,
+.body__main__gamingComputer__manager__container__article__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.body__main__bestseller__manager__container__article__price span,
+.body__main__gamingComputer__manager__container__article__price span {
+    background-color: var(--orange);
+    border-radius: 25px;
+    padding: 8px 15px;
+}
+
+.body__main__trustipilot {
+    margin: 100px 250px;
+}
+
+.body__main__trustipilot__title {
+    font-size: 40px;
+    color: var(--orange);
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: var(--font2);
+}
+
+.body__main__trustipilot__content {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.body__main__trustipilot__content__left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.body__main__trustipilot__content__left__p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: var(--font2);
+}
+
+.body__main__trustipilot__content__left__p a {
+    color: var(--orange);
+}
+
+.body__main__trustipilot__content__left__a {
+    background-color: #00b67a;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+    width: 200px;
+    text-align: center;
+    transition: all .1s linear;
+}
+
+.body__main__trustipilot__content__left__a:hover {
+    transform: translateX(5px);
+}
+
+.body__main__trustipilot__content__rigth {
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.body__main__trustipilot__content__rigth img {
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.body__main__faq {
+    color: #fff;
+    margin: 100px 250px;
+}
+
+.body__main__faq__content {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.body__main__faq__title {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.body__main__faq__title span {
+    color: var(--orange);
+}
+
+.body__main__faq__manager {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px !important;
+}
+
+.body__main__faq__manager__container {
+    border: 2px solid #00000033;
+    padding: 20px 15px;
+    border-radius: 5px;
+    transition: all .2s linear;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__faq__manager__container.active {
+    border: 2px solid var(--orange);
+}
+
+.body__main__faq__manager__container:hover {
+    border: 2px solid var(--orange);
+}
+
+.body__main__faq__manager__container__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.body__main__faq__manager__container__title .fa-circle-plus {
+    margin: 0 20px;
+    font-size: 22px;
+}
+
+.body__main__faq__manager__container__title .fa-circle-plus.active {
+    display: none;
+}
+
+.body__main__faq__manager__container__title .fa-circle-minus {
+    margin: 0 20px;
+    font-size: 22px;
+    display: none;
+    color: var(--orange);
+}
+
+.body__main__faq__manager__container__title .fa-circle-minus.active {
+    display: block;
+}
+
+.body__main__faq__manager__container__title p {
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+}
+
+.body__main__faq__manager__container__value {
+    margin-left: 70px;
+    font-size: 17px;
+    line-height: 25px;
+    margin-top: 0;
+    height: 0;
+    visibility: hidden;
+    transition: all .1s ease-in-out;
+}
+
+.body__main__faq__manager__container__value.active {
+    margin-top: 20px;
+    height: 100%;
+    visibility: visible;
+}
+
+.body__main__faq img {
+    width: 50%;
+    height: auto;
+    filter: drop-shadow(var(--orange) 20px 20px 20px);
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.body__main__partener {
+    margin-top: 100px;
+    background-image: url("/upload/partener.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 0 250px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    color: #fff;
+}
+
+.body__main__partener__title {
+    font-size: 55px;
+}
+
+.body__main__partener__p {
+    font-size: 20px;
+}
+
+.body__main__partener__a {
+    margin-top: 30px;
+    background-color: var(--orange);
+    text-align: center;
+    width: 200px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: all .1s linear;
+}
+
+.body__main__partener__a:hover {
+    transform: translateY(-5px);
+}
+
+
+.body__main__compagny {
+    margin: 100px 250px;
+    color: #fff;
+}
+
+.body__main__compagny__title {
+    font-size: 40px;
+}
+
+.body__main__compagny__title span {
+    color: var(--orange);
+}
+
+.body__main__compagny__content {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.body__main__compagny__content__left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.body__main__compagny__content__left p {
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 30px;
+}
+
+.body__main__compagny__content__left a {
+    background-color: var(--orange);
+    padding: 8px 15px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    font-size: 17px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .1s linear;
+    margin-top: 30px;
+}
+
+.body__main__compagny__content__left a:hover {
+    transform: translateY(-5px);
+}
+
+.body__main__compagny__content img {
+    width: 50%;
+    height: 400px;
+    filter: drop-shadow(var(--orange) 20px 20px 20px);
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1590px) {
+    .body__main__presentation {
+        margin: 0 100px;
+    }
+
+    .body__main__bestseller,
+    .body__main__gamingComputer {
+        margin: 100px 100px 0 100px;
+    }
+
+    .body__main__partener {
+        padding: 0 100px;
+    }
+
+    .body__main__trustipilot,
+    .body__main__faq,
+    .body__main__compagny {
+        margin: 100px;
+    }
+
+    .body__main__compagny__content img {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .body__main__presentation {
+        margin: 0 15px;
+    }
+
+    .body__main__bestseller,
+    .body__main__gamingComputer {
+        margin: 100px 15px 0 15px;
+    }
+
+    .body__main__partener {
+        padding: 0 15px;
+    }
+
+    .body__main__trustipilot,
+    .body__main__faq,
+    .body__main__compagny {
+        margin: 100px 15px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .body__main__faq__manager {
+        width: 100%;
+    }
+
+    .body__main__faq img {
+        display: none;
+    }
+
+    .body__main__partener__title,
+    .body__main__gaming__title {
+        font-size: 45px;
+    }
+
+    .body__main__partener__p,
+    .body__main__gaming__p {
+        font-size: 18px;
+    }
+
+    .body__main__partener__a,
+    .body__main__gaming__a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .body__main__trustipilot__content {
+        flex-direction: column-reverse;
+        gap: 0;
+        text-align: center;
+    }
+
+    .body__main__trustipilot__content__left,
+    .body__main__trustipilot__content__rigth {
+        width: 100%;
+    }
+
+    .body__main__trustipilot__title {
+        margin-bottom: 25px;
+    }
+
+    .body__main__trustipilot__content__rigth img {
+        display: none;
+    }
+
+    .body__main__trustipilot__content__left__p {
+        font-size: 16px;
+    }
+
+    .body__main__trustipilot__content__left__a {
+        margin: 30px auto;
+    }
+
+    .body__main__presentation__container {
+        height: 400px !important;
+    }
+
+    .body__main__gaming,
+    .body__main__partener {
+        background-size: auto;
+    }
+
+    .body__main__compagny__content__left {
+        width: 100%;
+    }
+
+    .body__main__compagny__content img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .body__main__bestseller__title,
+    .body__main__gamingComputer__title,
+    .body__main__faq__title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .body__main__compagny__title {
+        font-size: 30px;
+    }
+
+    .body__main__compagny__content__left p {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .body__main__gaming {
+        height: 600px;
+    }
+
+    .body__main__gaming__p {
+        font-size: 17px;
+    }
+
+    .body__main__partener {
+        height: 600px;
+    }
+
+    .body__main__partener__p {
+        font-size: 17px;
+    }
+
+    .body__main__faq__manager__container__title p {
+        font-size: 17px;
+    }
+
+    .body__main__faq__manager__container__value {
+        font-size: 16px;
+    }
+
+    .body__main__bestseller__manager,
+    .body__main__gamingComputer__manager {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .body__main__bestseller__manager__container,
+    .body__main__gamingComputer__manager__container {
+        padding: 30px;
+    }
+
+    .body__main__bestseller__manager__container__article__picture img,
+    .body__main__gamingComputer__manager__container__article__picture img {
+        height: 200px;
+    }
+
+    .body__main__bestseller__manager__container__article__price,
+    .body__main__gamingComputer__manager__container__article__price {
+        font-size: 14px;
+    }
+
+    .body__main__bestseller__manager__container__article__price span,
+    .body__main__gamingComputer__manager__container__article__price span {
+        font-size: 14px;
+    }
+
+    .swiperBestseller,
+    .swiperGamingComputer {
+        box-sizing: border-box !important;
+        height: 600px;
+    }
+
+    .swiper-paginationBestseller span,
+    .swiper-paginationGamingComputer span {
+        background-color: var(--orange) !important;
+    }
+
+    .body__main__bestseller__manager,
+    .body__main__gamingComputer__manager {
+        gap: 0px;
+    }
+
+    .body__main__bestseller__manager__container,
+    .body__main__gamingComputer__manager__container {
+        box-sizing: border-box !important;
+        max-height: 550px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    main {
+        margin-top: 100px;
+    }
+}

@@ -1,0 +1,298 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des articles" ,
+  css: "admin/shop" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Boutique</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Boutique</p>
+  <form action="" class="body__main__findArticle">
+    <div class="body__main__findArticle__inputFind">
+      <label for="findDesktopId"></label>
+      <input type="text" maxlength="100" name="findDesktop" id="findDesktopId" placeholder="Recherche par nom des ordinateurs">
+    </div>
+
+    <section class="body__main__findArticle__findByCategory">
+      <div class="body__main__findArticle__findByCategory__placeholder">
+        <% 
+          let placeholderSelect;
+          switch(data.filter?.type) {
+            case "0":
+              placeholderSelect = "Pc gaming"
+              break
+            case "1":
+              placeholderSelect = "Pc bureautique"
+              break
+            default: placeholderSelect = "Filtre"
+          }
+        %>
+        <p><%= placeholderSelect %></p>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="body__main__findArticle__findByCategory__select">
+        <a href="/admin/shop?filter=any">Aucun</a>
+        <a href="/admin/shop?filter=0">Pc gaming</a>
+        <a href="/admin/shop?filter=1">Pc bureautique</a>
+      </div>
+    </section>
+  </form>
+
+  <section class="body__main__article">
+    <section class="body__main__article__manager">
+      <a href="/admin/shop?create=0" class="body__main__article__manager__addArticleContainer">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+      <% data?.allDesktop?.forEach(desktop => { %>
+      <a href="/admin/shop/edit/<%= desktop.desktop_id %>" class="body__main__article__manager__container">
+        <article class="body__main__article__manager__container__article">
+          <div class="body__main__article__manager__container__article__picture">
+            <img src="<%= (desktop.image.find(x => x.index === 0)).link %>" alt="image.png">
+          </div>
+          <div class="body__main__article__manager__container__article__title">
+            <h3><%= desktop.title %></h3>
+          </div>
+          <section class="body__main__article__manager__container__article__configuration">
+            <div class="body__main__article__manager__container__article__configuration__cpu">
+              <img src="/upload/icons8-processor-32.png" alt="icons8-processor-32.png">
+              <p><%= desktop.config.processor %></p>
+            </div>
+            <div class="body__main__article__manager__container__article__configuration__gpu">
+              <img src="/upload/icons8-gpu-32.png" alt="icons8-gpu-32.png">
+              <p><%= desktop.config.graphic %></p>
+            </div>
+            <div class="body__main__article__manager__container__article__configuration__ram">
+              <img src="/upload/icons8-ram-32.png" alt="icons8-ram-32.png">
+              <p><%= desktop.config.ram %></p>
+            </div>
+            <div class="body__main__article__manager__container__article__configuration__ssd">
+              <img src="/upload/icons8-ssd-32.png" alt="icons8-ssd-32.png">
+              <p><%= desktop.config.storage %></p>
+            </div>
+          </section>
+          <section class="body__main__article__manager__container__article__price">
+            <p><%= desktop.price %> €</p>
+            <span><%= desktop.category %></span>
+          </section>
+        </article>
+      </a>
+      <% }) %>
+    </section>
+    <% if (data.totalDesktop > 10) { %>
+    <section class="body__main__article__arrow">
+      <div class="body__main__article__arrow__left">
+        <a href="/admin/shop?page=0<%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__article__arrow__left__start"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="/admin/shop?page=<%= data.arrow?.minus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__article__arrow__left__minus"><i class="fa-solid fa-chevron-left"></i></a>
+      </div>
+      <div class="body__main__article__arrow__rigth">
+        <a href="/admin/shop?page=<%= data.arrow?.plus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__article__arrow__rigth__plus"><i class="fa-solid fa-chevron-right"></i></i></a>
+        <a href="/admin/shop?page=<%= data.arrow?.end %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__article__arrow__rigth__end"><i class="fa-solid fa-angles-right"></i></a>
+      </div>
+    </section>
+    <% } %>
+  </section>
+
+  <% if (data.popup) { %>
+  <section class="body__main__popup">
+    <section class="body__main__popup__content">
+      <h2 class="body__main__popup__content__h2">Création d'un ordinateur</h2>
+      <i class="fa-solid fa-spinner waitRequest"></i>
+      <div class="body__main__popup__content__check">
+        <p>L'ordinateur a été créer avec succès !</p>
+      </div>
+      <section class="body__main__popup__content__form">
+        <div class="body__main__popup__content__form__filepond">
+          <input type="file" required class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="5" data-type="fr-FR" accept="image/jpeg, image/png, image/jpg">
+          <small class="small__form__filepond"></small>
+        </div>
+
+        <section class="body__main__popup__content__form__selectCategory">
+          <section class="body__main__popup__content__form__selectCategory__placeholder">
+            <label for="categoryId">Catégorie de l'ordinateur</label>
+            <div class="body__main__popup__content__form__selectCategory__placeholder__content">
+              <p>Choississez la catégorie</p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <small class="small__form__category"></small>
+          </section>
+          <div class="body__main__popup__content__form__selectCategory__select">
+            <span aria-value="0">Pc gaming</span>
+            <span aria-value="1">Pc bureautique</span>
+          </div>
+          <input type="hidden" value="" name="category" id="categoryId" class="body__main__popup__content__form__selectCategory__inputHidden">
+        </section>
+
+        <div class="body__main__popup__content__form__titleOfProduct inputText">
+          <label for="titleId">Nom de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="titleId" name="title" placeholder="Entrer le nom de l'ordinateur">
+          <small class="small__form__title"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__descriptionOfProduct inputTextarea">
+          <label for="descriptionId">Description de l'ordinateur</label>
+          <textarea required name="description" id="descriptionId" cols="30" rows="10" placeholder="Entrer la description de l'ordinateur"></textarea>
+          <small class="small__form__description"></small>
+        </div>
+
+        <section class="body__main__popup__content__form__priceOfProduct">
+          <label for="priceId">Prix de l'ordinateur</label>
+          <div class="body__main__popup__content__form__priceOfProduct__inputPrice">
+            <input type="text" maxlength="10" required autocomplete="on" id="priceId" name="price" placeholder="Entrer le prix de l'ordinateur">
+            <i class="fa-solid fa-euro-sign"></i>
+          </div>
+          <small class="small__form__price"></small>
+        </section>
+
+        <div class="body__main__popup__content__form__caseOfProduct inputText">
+          <label for="caseId">Boitier de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="caseId" name="case" placeholder="Entrer le boitier de l'ordinateur">
+          <small class="small__form__case"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__processorOfProduct inputText">
+          <label for="processorId">Processeur de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="processorId" name="processor" placeholder="Entrer le processeur de l'ordinateur">
+          <small class="small__form__processor"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__motherboard inputText">
+          <label for="motherboardId">Carte mère de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="motherboardId" name="motherboard" placeholder="Entrer la carte mère de l'ordinateur">
+          <small class="small__form__motherboard"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__graphicOfProduct inputText">
+          <label for="graphicId">Carte graphique de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="graphicId" name="graphic" placeholder="Entrer la carte graphique de l'ordinateur">
+          <small class="small__form__graphic"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__ram inputText">
+          <label for="ramId">Mémoire vive</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="ramId" name="ram" placeholder="Entrer la mémoire vive l'ordinateur">
+          <small class="small__form__ram"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__cooling inputText">
+          <label for="coolingId">Système de refroidissement</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="coolingId" name="cooling" placeholder="Entrer le système de refroidissement de l'ordinateur">
+          <small class="small__form__cooling"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__storage inputText">
+          <label for="storageId">Stockage de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="storageId" name="storage" placeholder="Entrer le stockage de l'ordinateur">
+          <small class="small__form__storage"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__powerSupply inputText">
+          <label for="powerSupplyId">Alimentation de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="powerSupplyId" name="powerSupply" placeholder="Entrer l'alimentation de l'ordinateur">
+          <small class="small__form__powerSupply"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__os inputText">
+          <label for="osId">Système d'exploitation de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="osId" name="os" placeholder="Entrer le système d'exploitation de l'ordinateur">
+          <small class="small__form__os"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__game">
+          <div class="body__main__popup__content__form__fortniteHigh inputText">
+            <label for="fortniteHighId">Fortnite élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="fortniteHighId" name="fortniteHigh" placeholder="Entrer le nombre de fps de Fortnite en élevé">
+            <small class="small__form__fortniteHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__fortniteUltra inputText">
+            <label for="fortniteUltraId">Fortnite ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="fortniteUltraId" name="fortniteUltra" placeholder="Entrer le nombre de fps de Fortnite en ultra">
+            <small class="small__form__fortniteUltra"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__apexHigh inputText">
+            <label for="apexHighId">Apex élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="apexHighId" name="apexHigh" placeholder="Entrer le nombre de fps d'Apex Legends en élevé">
+            <small class="small__form__apexHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__apexUltra inputText">
+            <label for="apexUltraId">Apex ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="apexUltraId" name="apexUltra" placeholder="Entrer le nombre de fps d'Apex Legends en ultra">
+            <small class="small__form__apexUltra"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__valorantHigh inputText">
+            <label for="valorantHighId">Valorant élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="valorantHighId" name="valorantHigh" placeholder="Entrer le nombre de fps de Valorant en élevé">
+            <small class="small__form__valorantHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__valorantUltra inputText">
+            <label for="valorantUltraId">Valorant ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="valorantUltraId" name="valorantUltra" placeholder="Entrer le nombre de fps de Valorant en ultra">
+            <small class="small__form__valorantUltra"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__cyberpunkHigh inputText">
+            <label for="cyberpunkHighId">CyberPunk 2077 élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="cyberpunkHighId" name="cyberpunkHigh" placeholder="Entrer le nombre de fps de CyberPunk 2077 en élevé">
+            <small class="small__form__cyberpunkHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__cyberpunkUltra inputText">
+            <label for="cyberpunkUltraId">CyberPunk 2077 ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="cyberpunkUltraId" name="cyberpunkUltra" placeholder="Entrer le nombre de fps de CyberPunk 2077 en ultra">
+            <small class="small__form__cyberpunkUltra"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__battlefieldHigh inputText">
+            <label for="battlefieldHighId">BattleField 2042 élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="battlefieldHighId" name="battlefieldHigh" placeholder="Entrer le nombre de fps de Battlefield 2042 en élevé">
+            <small class="small__form__battlefieldHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__battlefieldUltra inputText">
+            <label for="battlefieldUltraId">BattleField 2042 ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="battlefieldUltraId" name="battlefieldUltra" placeholder="Entrer le nombre de fps de Battlefield 2042 en ultra">
+            <small class="small__form__battlefieldUltra"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__rainbowsixHigh inputText">
+            <label for="rainbowsixHighId">Rainbow Six Siege élevé</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="rainbowsixHighId" name="rainbowsixHigh" placeholder="Entrer le nombre de fps de Rainbow Six Siege en élevé">
+            <small class="small__form__rainbowsixHigh"></small>
+          </div>
+
+          <div class="body__main__popup__content__form__rainbowsixUltra inputText">
+            <label for="rainbowsixUltraId">Rainbow Six Siege ultra</label>
+            <input type="number" maxlength="3" required autocomplete="on" id="rainbowsixUltraId" name="rainbowsixUltra" placeholder="Entrer le nombre de fps de Rainbow Six Siege en ultra">
+            <small class="small__form__rainbowsixUltra"></small>
+          </div>
+        </div>
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" name="submitButton" value="Créer l'ordinateur" disabled>
+        </div>
+      </section>
+
+      <a href="/admin/shop" class="body__main__popup__content__closeWindow">Fermer la fenêtre</a>
+    </section>
+  </section>
+  <% } %>
+  <script src="/filepond/filepond-plugin-file-validate-type.js"></script>
+  <script src="/filepond/filepond-plugin-file-encode.js"></script>
+  <script src="/filepond/filepond-plugin-image-preview.js"></script>
+  <script src="/filepond/filepond.js"></script>
+  <script src="/filepond/filepond-plugin-file-metadata.js"></script>
+  <script src="/filepond/filepond-plugin-file-poster.js"></script>
+  <script src="/function/filepond.js"></script>
+  <script src="/jquery.js"></script>
+  <script src="/admin/shop.js"></script>
+  <% if (data.desktop) { %>
+  <% data.desktop.image.forEach(image => { %>
+  <script>
+    filePondInput.addFile("<%= image.link %>")
+  </script>
+  <% }) %>
+  <% } %>
+</main>
+
+<%- include('../base/footer') %>

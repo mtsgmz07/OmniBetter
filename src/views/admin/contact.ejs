@@ -1,0 +1,106 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des formulaires de contact" ,
+  css: "admin/contact" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Contact</h1>
+  <% if (data.contact) { %>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span><a href="/admin/contact">Contact</a><span>/</span><%= data.contact?.email %></p>
+  <section class="body__main__response">
+    <section class="body__main__response__author">
+      <h2 class="body__main__response__author__h2">Message envoyé</h2>
+      <form action="" class="body__main__response__author__form" method="post">
+        <section class="body__main__response__author__form__nameAndSurname">
+          <div class="body__main__response__author__form__nameAndSurname__name">
+            <label for="inputNameId">Prénom</label>
+            <input type="text" id="inputNameId" value="<%= data.contact?.name %>" disabled>
+          </div>
+          <div class="body__main__response__author__form__nameAndSurname__surname">
+            <label for="inputSurnameId">Nom</label>
+            <input type="text" id="inputSurnameId" value="<%= data.contact?.surname %>" disabled>
+          </div>
+        </section>
+
+        <div class="body__main__response__author__form__sendType">
+          <label for="inputSendTypeId">Type d'envoie</label>
+          <input type="text" id="inputSendTypeId" value="<%= data.contact?.reason %>" disabled>
+        </div>
+
+        <div class="body__main__response__author__form__message">
+          <label for="inputMessageId">Message envoyé</label>
+          <textarea id="inputMessageId" cols="30" rows="10" disabled><%= data.contact?.message %></textarea>
+        </div>
+      </form>
+    </section>
+    <div class="body__main__response__separation"></div>
+    <section class="body__main__response__admin">
+      <h2 class="body__main__response__admin__h2">Réponse du support</h2>
+      <% if (data?.check) { %>
+      <div class="body__main__response__admin__check">
+        <p>Votre réponse a bien été envoyé !</p>
+      </div>
+      <% } %>
+      <form action="/admin/contact?id=<%= data.contact?.contact_id %>" class="body__main__response__admin__form" method="post">
+        <div class="body__main__response__admin__form__email">
+          <label for="inputEmailId">Email utilisé</label>
+          <input type="email" id="inputEmailId" value="support@omnibetter.fr" disabled>
+        </div>
+
+        <div class="body__main__response__admin__form__response">
+          <label for="inputResponseId">Réponse</label>
+          <textarea <%= data.check ? "disabled" : "" %> id="inputResponseId" name="inputResponse" cols="30" rows="10" placeholder="Votre réponse"><%= data.value?.inputResponse %></textarea>
+        </div>
+
+        <div class="body__main__response__admin__form__submit">
+          <input type="submit" value="Envoyer" disabled>
+
+        </div>
+
+        <section class="body__main__response__admin__form__delete">
+          <span class="body__main__response__admin__form__delete__firstAction">Supprimer</span>
+          <div class="body__main__response__admin__form__delete__action">
+            <span class="body__main__response__admin__form__delete__action__confirm">Confirmer</span>
+            <span class="body__main__response__admin__form__delete__action__cancel">Annuler</span>
+          </div>
+          <span class="body__main__response__admin__form__delete__result"></span>
+        </section>
+        <input type="hidden" value="<%= data.contact?.contact_id %>" name="contactId" class="body__main__response__admin__form__contactId">
+      </form>
+    </section>
+  </section>
+  <script src="/jquery.js"></script>
+  <script src="/admin/contact.js"></script>
+  <% } else { %>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Contact</p>
+  <% if (!data.email[0]) { %>
+  <h2 class="body__main__anyEmail">Aucun e-mail</h2>
+  <% } else { %>
+  <section class="body__main__manager">
+    <% data.email.forEach(contact => { %>
+    <a href="/admin/contact?id=<%= contact.contact_id %>" class="body__main__manager__container">
+      <p class="body__main__manager__container__reason"><%= contact.reason %></p>
+      <div class="body__main__manager__container__head">
+        <h3 class="body__main__manager__container__head__recipient"><%= contact.email %></h3>
+        <p class="body__main__manager__container__head__date"><%= contact.create_time %></p>
+      </div>
+      <p class="body__main__manager__container__message"><%= contact.message %>.</p>
+    </a>
+    <% }) %>
+  </section>
+  <% if (data.totalEmail > 10) { %>
+  <section class="body__main__arrow">
+    <div class="body__main__arrow__left">
+      <a href="/admin/contact?page=0" class="body__main__arrow__start"><i class="fa-solid fa-angles-left"></i></a>
+      <a href="/admin/contact?page=<%= data.arrow?.minus %>" class="body__main_0arrow__minus"><i class="fa-solid fa-chevron-left"></i></a>
+    </div>
+    <div class="body__main__arrow__rigth">
+      <a href="/admin/contact?page=<%= data.arrow?.plus %>" class="body__main__arrow__plus"><i class="fa-solid fa-chevron-right"></i></i></a>
+      <a href="/admin/contact?page=<%= data.arrow?.end %>" class="body__main__arrow__end"><i class="fa-solid fa-angles-right"></i></a>
+    </div>
+  </section>
+  <% } %>
+  <% } %>
+
+  <% } %>
+</main>
+
+<%- include('../base/footer') %>

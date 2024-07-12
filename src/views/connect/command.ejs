@@ -1,0 +1,65 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Mes commandes" ,
+  css: "connect/command" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Mes commandes</h1>
+  <p class="body__main__path"><a href="/connect/account">Mon compte</a><span>/</span>Mes commandes</p>
+  <section class="body__main__commands">
+    <% if (data.paymentOfUser[0]) { %>
+    <% data.paymentOfUser.forEach(payment => { %>
+    <section class="body__main__commands__container">
+      <input type="hidden" value="<%= payment.id %>" class="paymentId">
+      <section class="body__main__commands__container__info">
+        <div class="body__main__commands__container__info__left">
+          <h2 class="body__main__commands__container__info__left__h2">Commande du <%= payment.create_time %> - <span class="status<%= payment.statusInNumber %>"><%= payment.statusInText %></span></h2>
+          <p class="body__main__commands__container__info__left__reference">Référence : <%= payment.id %></p>
+          <p class="body__main__commands__container__info__left__deliveryAddress">Adresse de livraison: <%= payment.delivery %></p>
+          <p class="body__main__commands__container__info__left__total">Totale de la commande (TVA inclus): <%= payment.totalAmount %> &euro;</p>
+        </div>
+        <div class="body__main__commands__container__info__rigth">
+          <a download="facture.pdf" href="" class="body__main__commands__container__info__rigth__downloadInvoice disabled">Création de la preuve d'achat</a>
+          <a <%= payment.payment_tracker ? "href=" + payment.payment_tracker : "" %> class="body__main__commands__container__info__rigth__delivery <%= payment.statusInNumber <= 1 ? "disabledTracker" : "" %>">Suivre ma livraison</a>
+        </div>
+      </section>
+      <section class="body__main__commands__container__article">
+        <% payment.items.forEach(desktop => { %>
+        <section class="body__main__commands__container__article__container">
+          <a href="/shop/product/<%= desktop.id %>" class="body__main__commands__container__article__container__left">
+            <div class="body__main__commands__container__article__container__image">
+              <img src="<%= desktop.image.link %>" alt="ZYArpc4oQS.png">
+            </div>
+            <div class="body__main__commands__container__article__container__info">
+              <h3 class="body__main__commands__container__article__container__info__title"><%= desktop.title %></h3>
+              <p class="body__main__commands__container__article__container__info__price">Prix unité: <%= desktop.price %> &euro;</p>
+              <p class="body__main__commands__container__article__container__info__price">Prix totale: <%= (desktop.totalAmount / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> €</p>
+              <p class="body__main__commands__container__article__container__info__assembly">Type de montage: <%= desktop.assembly %></p>
+              <p class="body__main__commands__container__article__container__info__quantity">Quantité: <%= desktop.quantity %></p>
+            </div>
+          </a>
+          <div class="body__main__commands__container__article__container__rigth">
+            <a href="/contact">Signaler un problème</a>
+          </div>
+        </section>
+        <% }) %>
+      </section>
+    </section>
+    <% }) %>
+    <% } else { %>
+    <h2 class="body__main__anyCommand">Aucune commande</h2>
+    <% } %>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
+  <script>
+    tippy('.disabledTracker', {
+      animation: 'fade',
+      placement: 'right',
+      content: "Action indisponible pour le status de votre commande",
+      maxWidth: 300
+    });
+  </script>
+  <script src="/jquery.js"></script>
+  <script src="/connect/command.js"></script>
+</main>
+
+<%- include('../base/footer') %>

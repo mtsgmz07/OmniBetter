@@ -1,0 +1,179 @@
+<%- include('base/header', { header: { title: "OmniBetter - Mon panier" ,
+  css: "basket" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Mon panier</h1>
+  <% if (!data.basketOfUser[0]) { %>
+  <h2 class="body__main__anyBasket">Votre panier est vide</h2>
+  <% } else { %>
+  <section class="body__main__basket">
+    <section class="body__main__basket__commands">
+      <% if (data.check) { %>
+      <div class="body__main__basket__commands__check">
+        <p>L'ordinateur a bien été ajouté à votre panier !</p>
+      </div>
+      <% } %>
+      <% data.basketOfUser.forEach(desktop => { %>
+      <article class="body__main__basket__commands__container">
+        <a href="/shop/product/<%= desktop.id %>" class="body__main__basket__commands__container__redirect">
+          <div class="body__main__basket__commands__container__redirect__image">
+            <img src="<%= desktop.image.link %>" alt="ZYArpc4oQS.png">
+          </div>
+          <div class="body__main__basket__commands__container__redirect__info">
+            <h3 class="body__main__basket__commands__container__redirect__info__title"><%= desktop.title %></h3>
+            <p class="body__main__basket__commands__container__redirect__info__price">Prix unité: <%= desktop.price %> &euro;</p>
+            <p class="body__main__basket__commands__container__redirect__info__assembly">Type de montage: <%= desktop.assembly %></p>
+            <p class="body__main__basket__commands__container__redirect__info__quantity">Quantité: <%= desktop.quantity %></p>
+          </div>
+        </a>
+        <div class="body__main__basket__commands__container__action">
+          <a href="/basket?id=<%= desktop.id %>&assembly=<%= desktop.assemblyInNumber %>"> <i class="fa-solid fa-pen-to-square editComputer"></i></a>
+          <i id="<%= desktop.id %>" aria-assembly="<%= desktop.assemblyInNumber %>" class="fa-solid fa-trash deleteComputer"></i>
+        </div>
+      </article>
+      <% }) %>
+    </section>
+    <section class="body__main__basket__total">
+      <h2 class="body__main__basket__total__h2">Totale de la commande</h2>
+      <section class="body__main__basket__total__summary">
+        <h3 class="body__main__basket__total__summary__h3">Récapitulatif de la commande</h3>
+        <div class="body__main__basket__total__summary__separation"></div>
+        <div class="body__main__basket__total__summary__manager">
+          <% data.basketOfUser.forEach(desktop => { %>
+          <div class="body__main__basket__total__summary__manager__container">
+            <p class="body__main__basket__total__summary__manager__container__desktopName"><%= desktop.title %></p>
+            <p class="body__main__basket__total__summary__manager__container__desktopPrice"><%= (((desktop.priceInNumber * desktop.quantity) + ((desktop.assemblyInNumber === 1 ? 3000 : desktop.assemblyInNumber === 2 ? 5000 : 0) * desktop.quantity)) / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &euro;</p>
+          </div>
+          <% }) %>
+        </div>
+      </section>
+      <section class="body__main__basket__total__amount">
+        <h3 class="body__main__basket__total__amount__h3">Montant de la commande</h3>
+        <div class="body__main__basket__total__amount__separation"></div>
+        <div class="body__main__basket__total__amount__manager">
+          <div class="body__main__basket__total__amount__manager__container">
+            <p class="body__main__basket__total__amount__manager__container__containerTitle">Montant hors taxes</p>
+            <% 
+            let reduceArray = data.basketOfUser.reduce((acc, currentItem) => {
+            return acc + currentItem.totalAmount;
+            }, 0)
+            let withoutTax = reduceArray * 0.8;
+            let tax = reduceArray - withoutTax
+            let totalAmount = reduceArray
+            %>
+            <p class="body__main__basket__total__amount__manager__container__containerValue"><%= (withoutTax / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &euro;</p>
+          </div>
+          <div class="body__main__basket__total__amount__manager__container">
+            <p class="body__main__basket__total__amount__manager__container__containerTitle">Taxes (20%)</p>
+            <p class="body__main__basket__total__amount__manager__container__containerValue"><%= (tax / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &euro;</p>
+          </div>
+          <div class="body__main__basket__total__amount__manager__container">
+            <p class="body__main__basket__total__amount__manager__container__containerTitle">Montant totale</p>
+            <p class="body__main__basket__total__amount__manager__container__containerValue"><%= (totalAmount / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &euro;</p>
+          </div>
+        </div>
+      </section>
+      <div class="body__main__basket__total__checkout">
+        <a href="/shop/gaming" class="body__main__basket__total__checkout__cancel">
+          <i class="fa-solid fa-arrow-left-long"></i>
+          <p>Continuer mes achats</p>
+        </a>
+        <div class="body__main__basket__total__checkout__success">
+          <span>Procéder au paiement</span>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <div class="body__main__loading">
+    <i class="fa-solid fa-spinner createStripe"></i>
+  </div>
+
+  <% if (data.popup) { %>
+  <section class="body__main__popup">
+    <section class="body__main__popup__content">
+      <h2 class="body__main__popup__content__h2">Modification</h2>
+      <i class="fa-solid fa-spinner waitRequest"></i>
+      <div class="body__main__popup__content__check">
+        <p>Les modifications ont bien été enregistrer !</p>
+      </div>
+      <div class="body__main__popup__content__error">
+        <p>Une erreur vient se produire, veuillez ressayer ultérieurement.</p>
+      </div>
+      <section class="body__main__popup__content__form">
+        <section class="body__main__popup__content__form__selectAssembly">
+          <div class="body__main__popup__content__form__selectAssembly__placeholder">
+            <div class="body__main__popup__content__form__selectAssembly__placeholder__content">
+              <p><%= data.popup.assembly %></p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <small class="body__main__popup__content__form__selectAssembly__placeholder__content__small">
+              <i class="fa-solid fa-circle-info"></i>
+              <p>Choississez votre option de montage</p>
+            </small>
+          </div>
+          <section class="body__main__popup__content__form__selectAssembly__option__content">
+            <div class="body__main__popup__content__form__selectAssembly__option__content__first">
+              <p>Intallation windows 10 pro essaie</p>
+              <p>+ 0€</p>
+            </div>
+            <div class="body__main__popup__content__form__selectAssembly__option__content__second">
+              <p>Activiation windows 10 pro</p>
+              <p>+ 30€</p>
+            </div>
+            <div class="body__main__popup__content__form__selectAssembly__option__content__third">
+              <p>Activiation windows 10 pro + Optimisation</p>
+              <p>+ 50€</p>
+            </div>
+          </section>
+          <input type="hidden" value="<%= data.popup.assemblyInNumber %>" name="assembly" class="body__main__popup__content__form__selectAssembly__inputHidden">
+          <input type="hidden" value="<%= data.popup.assemblyInNumber %>" name="lastAssembly" class="body__main__popup__content__form__lastAssembly__inputHidden">
+        </section>
+
+        <section class="body__main__popup__content__form__quantity">
+          <input type="hidden" value="<%= data.popup.quantity %>" name="quantity" class="body__main__popup__content__form__quantity__inputHidden">
+          <input type="hidden" value="<%= data.popup.desktop_id %>" name="deskop_id" class="body__main__popup__content__form__desktopId__inputHidden">
+          <div class="body__main__popup__content__form__quantity__input">
+            <i class="fa-solid fa-minus body__main__popup__content__form__quantity__input__minus"></i>
+            <p class="body__main__popup__content__form__quantity__input__placeholder"><%= data.popup.quantity %></p>
+            <i class="fa-solid fa-plus body__main__popup__content__form__quantity__input__plus"></i>
+          </div>
+          <small class="body__main__popup__content__form__quantity__small">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Choissisez la quantité du produit</p>
+          </small>
+        </section>
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" name="submitButton" value="Enregistrer">
+        </div>
+      </section>
+
+      <a href="/basket" class="body__main__popup__content__closeWindow">Fermer la fenêtre</a>
+    </section>
+  </section>
+  <% } %>
+  <% } %>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
+  <script>
+    tippy('.editComputer', {
+      animation: 'fade',
+      placement: 'right',
+      content: "Modifier l'ordinateur"
+    });
+    tippy('.deleteComputer', {
+      animation: 'fade',
+      placement: 'right',
+      content: "Supprimer l'ordinateur"
+    });
+  </script>
+  <script src="/jquery.js"></script>
+  <script src="/basket.js"></script>
+</main>
+
+<%- include('base/footer') %>

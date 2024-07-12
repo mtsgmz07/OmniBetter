@@ -1,0 +1,207 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des utilisateurs" ,
+  css: "admin/user" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Utilisateurs</h1>
+  <% if (data.user) { %>
+  <input type="hidden" value="<%= data.user?.account_id %>" class="body__main__accountId">
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span><a href="/admin/user">Utilisateurs</a><span>/</span><%= data.user?.email %></p>
+  <section class="body__main__user">
+    <section class="body__main__user__userInformation">
+      <h2 class="body__main__user__userInformation__h2">Informations</h2>
+      <form action="" class="body__main__user__userInformation__form">
+        <section class="body__main__user__userInformation__form__nameAndSurname">
+          <div class="body__main__user__userInformation__form__nameAndSurname__name inputText">
+            <label for="inputNameId">Prénom</label>
+            <input type="text" id="inputNameId" value="<%= data.user?.name %>" disabled>
+          </div>
+          <div class="body__main__user__userInformation__form__nameAndSurname__surname inputText">
+            <label for="inputSurnameId">Nom</label>
+            <input type="text" id="inputSurnameId" value="<%= data.user?.surname %>" disabled>
+          </div>
+        </section>
+
+        <div class="body__main__user__userInformation__form__email inputText">
+          <label for="inputEmailId">Adresse e-mail</label>
+          <input type="email" id="inputEmailId" value="<%= data.user?.email %>" disabled>
+        </div>
+
+        <div class="body__main__user__userInformation__form__role inputText">
+          <label for="inputRoleId">Rôle du compte</label>
+          <input type="text" id="inputRoleId" value="<%= data.user?.role %>" disabled>
+        </div>
+
+        <div class="body__main__user__userInformation__form__create inputText">
+          <label for="inputDateId">Création du compte</label>
+          <input type="text" id="inputDateId" value="<%= data.user?.create_time %>" disabled>
+        </div>
+      </form>
+    </section>
+    <div class="body__main__user__separation"></div>
+    <section class="body__main__user__manageUser">
+      <h2 class="body__main__user__manageUser__h2">Gestions</h2>
+      <div class="body__main__user__manageUser__manager">
+        <span aria-value="editEmail" class="body__main__user__manageUser__manager__editEmail">Adresse e-mail</span>
+        <span aria-value="editPassword" class="body__main__user__manageUser__manager__editPassword">Mot de passe</span>
+        <span aria-value="editRole" class="body__main__user__manageUser__manager__editRole">Rôle du compte</span>
+        <span aria-value="deleteAccount" class="body__main__user__manageUser__manager__deleteAccount">Supprimer le compte</span>
+      </div>
+    </section>
+  </section>
+
+  <% if (data?.popup) { %>
+  <section class="body__main__popup">
+    <section class="body__main__popup__content">
+      <h2 class="body__main__popup__content__h2"><%= data?.popup?.title %></h2>
+      <% if (data?.popup?.check?.status) { %>
+      <div class="body__main__popup__content__check">
+        <p><%= data?.popup?.check?.value %></p>
+      </div>
+      <% } %>
+
+      <% if (data?.popup?.editEmail) { %>
+      <form method="post" action="/admin/user?id=<%= data.user?.account_id %>" class="body__main__popup__content__form editEmail">
+        <div class="body__main__popup__content__form__email inputText">
+          <label for="inputNewEmailId">Nouvelle adresse e-mail</label>
+          <input <%= data?.popup?.check?.status ? "disabled" : "" %> type="email" placeholder="Entrer la nouvelle adresse e-mail" name="inputNewEmail" id="inputNewEmailId" maxlength="255" required value="<%= data.popup?.editEmail?.value?.inputNewEmail %>">
+          <small class="small__form__inputNewEmail"><%= data.popup?.editEmail?.error?.inputNewEmail %></small>
+        </div>
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" value="Modifier" name="editEmail" disabled>
+          <input type="hidden" value="editEmail" name="popup">
+        </div>
+      </form>
+      <% } %>
+
+
+      <% if (data?.popup?.editPassword) { %>
+      <form method="post" action="/admin/user?id=<%= data.user?.account_id %>" class="body__main__popup__content__form editPassword">
+        <section class="body__main__popup__content__form__password inputPassword">
+          <label for="inputNewPasswordId">Nouveau mot de passe</label>
+          <div class="body__main__popup__content__form__password__inputPassword">
+            <input <%= data?.popup?.check?.status ? "disabled" : "" %> type="password" maxlength="25" required placeholder="Entrer le nouveau mot de passe" name="inputNewPassword" id="inputNewPasswordId" autocomplete="new-password" value="<%= data.popup?.editPassword?.value?.inputNewPassword %>">
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <small class="small__form__inputNewPassword"><%= data.popup?.editPassword?.error?.inputNewPassword %></small>
+        </section>
+
+        <section class="body__main__popup__content__form__retypePassword inputPassword">
+          <label for="inputRetypePasswordId">Retapez le mot de passe</label>
+          <div class="body__main__popup__content__form__retypePassword__inputPassword">
+            <input <%= data?.popup?.check?.status ? "disabled" : "" %> type="password" maxlength="25" required placeholder="Retapez le nouveau mot de passe" name="inputRetypePassword" id="inputRetypePasswordId" autocomplete="current-password" value="">
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <small class="small__form__inputRetypePassword"><%= data.popup?.editPassword?.error?.inputRetypePassword %></small>
+        </section>
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" value="Modifier" name="editPassword" disabled>
+          <input type="hidden" value="editPassword" name="popup">
+        </div>
+      </form>
+      <% } %>
+
+
+      <% if (data?.popup?.editRole) { %>
+      <form method="post" action="/admin/user?id=<%= data.user?.account_id %>" class="body__main__popup__content__form editRole">
+        <section class="body__main__popup__content__form__selectRole">
+          <div class="body__main__popup__content__form__selectRole__placeholder">
+            <p>Choissisez le rôle</p>
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+          <div class="body__main__popup__content__form__selectRole__select">
+            <span aria-value="1">Client</span>
+            <span aria-value="2">Administrateur</span>
+          </div>
+        </section>
+        <input type="hidden" name="inputEditRole" value="" class="body__main__popup__content__form__selectRole__inputValue">
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" value="Modifier" name="editRole" disabled>
+          <input type="hidden" value="editRole" name="popup">
+        </div>
+      </form>
+      <% } %>
+      <a href="/admin/user?id=<%= data.user?.account_id %>" class="body__main__popup__content__closeWindow">Fermer la fenêtre</a>
+    </section>
+  </section>
+  <% } %>
+  <% } else { %>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Utilisateurs</p>
+  <form action="" class="body__main__path__findClient">
+    <div class="body__main__path__findClient__inputFind">
+      <label for="findClientId"></label>
+      <input type="text" maxlength="255" name="findClient" id="findClientId" placeholder="Recherche par adresse e-mail">
+    </div>
+
+    <section class="body__main__path__findClient__findByRole">
+      <div class="body__main__path__findClient__findByRole__placeholder">
+        <% 
+          let placeholderSelect;
+          switch(data.filter?.type) {
+            case "0":
+              placeholderSelect = "Non vérifié"
+              break
+            case "1":
+              placeholderSelect = "Client"
+              break
+            case "2":
+              placeholderSelect = "Administrateur"
+              break
+            default: placeholderSelect = "Filtre"
+          }
+        %>
+        <p><%= placeholderSelect %></p>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="body__main__path__findClient__findByRole__select">
+        <a href="/admin/user?filter=any">Aucun</a>
+        <a href="/admin/user?filter=0">Non vérifiés</a>
+        <a href="/admin/user?filter=1">Client</a>
+        <a href="/admin/user?filter=2">Administrateur</a>
+      </div>
+    </section>
+  </form>
+
+  <h2 class="body__main__anyAccount">Aucun compte trouvé</h2>
+  <section class="body__main__users">
+    <% data.account.forEach(account => { %>
+    <section class="body__main__users__container">
+      <div class="body__main__users__container__icon">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+      <div class="body__main__users__container__content">
+        <p class="body__main__users__container__content__title"><%= account.email %></p>
+        <p>
+          Prénom: <%= account.name %><br>
+          Nom: <%= account.surname %><br>
+          Rôle du compte: <%= account.role %><br>
+          Compte créer le: <%= account.create_time %><br>
+        </p>
+      </div>
+      <div class="body__main__users__container__action">
+        <a href="/admin/user?id=<%= account.account_id %>">Modifier</a>
+      </div>
+    </section>
+    <% }) %>
+  </section>
+
+  <% if (data.totalUser > 10) { %>
+  <section class="body__main__arrow">
+    <div class="body__main__arrow__left">
+      <a href="/admin/user?page=0<%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__start"><i class="fa-solid fa-angles-left"></i></a>
+      <a href="/admin/user?page=<%= data.arrow?.minus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main_0arrow__minus"><i class="fa-solid fa-chevron-left"></i></a>
+    </div>
+    <div class="body__main__arrow__rigth">
+      <a href="/admin/user?page=<%= data.arrow?.plus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__plus"><i class="fa-solid fa-chevron-right"></i></i></a>
+      <a href="/admin/user?page=<%= data.arrow?.end %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__end"><i class="fa-solid fa-angles-right"></i></a>
+    </div>
+  </section>
+  <% } %>
+  <% } %>
+  <script src="/jquery.js"></script>
+  <script src="/admin/user.js"></script>
+</main>
+
+<%- include('../base/footer') %>

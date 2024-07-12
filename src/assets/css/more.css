@@ -1,0 +1,143 @@
+.tippy-box[data-inertia][data-state='visible'] {
+    transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
+}
+
+.tippy-box {
+    max-width: 200px;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: var(--font);
+}
+
+.tippy-arrow {
+    color: #333;
+}
+
+.tippy-arrow::after {
+    border-color: #333;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAaElEQVR4nO3UQQqAMAxE0TmY7q3XFi9iD/JFoQuhGm0rguStpxmaRaSvADMwtcrlHu7UKJfCIxApF4FwVVAzPFnM79bS/wtUCC+w+IpMviLTk1PR2eOOgP5OwevnOmyBmuHAcFrglLEC0J/HIjy8EewAAAAASUVORK5CYII=');
+}
+
+.filepond--root {
+    font-family: var(--font2) !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+}
+
+.filepond--drop-label {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.filepond--panel-root {
+    background-color: transparent !important;
+    border: 1px solid #00000033;
+}
+
+.filepond--drop-label {
+    color: #fff !important;
+}
+
+.inputText,
+.inputTextarea,
+.inputPassword {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputText label,
+.inputTextarea label,
+.inputPassword label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.inputText input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputTextarea textarea {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.inputPassword div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .1s linear;
+}
+
+.inputPassword input {
+    border: none;
+    height: 56px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    padding: 5px 20px;
+    color: #fff;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputPassword div i {
+    margin: 0 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.inputText input::placeholder,
+.inputTextarea textarea::placeholder,
+.inputPassword input::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.inputText input:focus,
+.inputTextarea textarea:focus,
+.inputPassword div:focus-within {
+    border: 1px solid var(--orange);
+}
+
+.inputText input:disabled,
+.inputTextarea textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,0 +1,74 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des articles" ,
+  css: "admin/commandActive" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Commandes actives</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span><a href="/admin/command">Commandes</a><span>/</span>Commandes actives</p>
+  <section class="body__main__findCommand">
+    <div class="body__main__findCommand__inputFind">
+      <label for="findCommandId"></label>
+      <input type="text" maxlength="100" name="findCommand" id="findCommandId" placeholder="Recherche par identifiant de commande">
+    </div>
+
+    <section class="body__main__findCommand__findByCategory">
+      <div class="body__main__findCommand__findByCategory__placeholder">
+        <p>Filtre</p>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="body__main__findCommand__findByCategory__select">
+        <a href="/admin/command/active?filter=0">Traitement de la commande</a>
+        <a href="/admin/command/active?filter=1">Assemblage de la commande</a>
+        <a href="/admin/command/active?filter=2">En cours de livraison</a>
+      </div>
+    </section>
+  </section>
+
+  <section class="body__main__commands">
+    <% if (data.allPayment[0]) { %>
+    <% data.allPayment.forEach(payment => { %>
+    <a href="/admin/command/manage/<%= payment.id %>" class="body__main__commands__container">
+      <input type="hidden" value="<%= payment.id %>" class="paymentId">
+      <section class="body__main__commands__container__info">
+        <div class="body__main__commands__container__info__left">
+          <h2 class="body__main__commands__container__info__left__h2">Commande du <%= payment.create_time %> - <span class="status<%= payment.status %>"><%= payment.statusInText %></span></h2>
+          <p class="body__main__commands__container__info__left__reference">Référence : <%= payment.id %></p>
+          <p class="body__main__commands__container__info__left__deliveryAddress">Adresse de livraison: <%= payment.delivery %></p>
+          <p class="body__main__commands__container__info__left__total">Totale de la commande (TVA inclus): <%= payment.totalAmount %> &euro;</p>
+        </div>
+        <div class="body__main__commands__container__info__rigth">
+          <span download="facture.pdf" href="" class="body__main__commands__container__info__rigth__downloadInvoice disabled">Imprimer une preuve d'achat</span>
+          <span href="" class="body__main__commands__container__info__rigth__delivery disabled">Suivre ma livraison</span>
+        </div>
+      </section>
+      <section class="body__main__commands__container__article">
+        <% payment.items.forEach(desktop => { %>
+        <section class="body__main__commands__container__article__container">
+          <div class="body__main__commands__container__article__container__left">
+            <div class="body__main__commands__container__article__container__image">
+              <img src="<%= desktop.image.link %>" alt="ZYArpc4oQS.png">
+            </div>
+            <div class="body__main__commands__container__article__container__info">
+              <h3 class="body__main__commands__container__article__container__info__title"><%= desktop.title %></h3>
+              <p class="body__main__commands__container__article__container__info__price">Prix unité: <%= desktop.price %> &euro;</p>
+              <p class="body__main__commands__container__article__container__info__price">Prix totale: <%= (desktop.totalAmount / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> €</p>
+              <p class="body__main__commands__container__article__container__info__assembly">Type de montage: <%= desktop.assembly %></p>
+              <p class="body__main__commands__container__article__container__info__quantity">Quantité: <%= desktop.quantity %></p>
+            </div>
+          </div>
+          <div class="body__main__commands__container__article__container__rigth">
+            <span class="disabled" href="/contact">Signaler un problème</span>
+          </div>
+        </section>
+        <% }) %>
+      </section>
+    </a>
+    <% }) %>
+    <% } else { %>
+    <h2 class="body__main__anyCommand">Aucune commande</h2>
+    <% } %>
+  </section>
+  <script src="/jquery.js"></script>
+  <script src="/admin/command.js"></script>
+</main>
+
+<%- include('../base/footer') %>

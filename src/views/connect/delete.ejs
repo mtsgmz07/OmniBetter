@@ -1,0 +1,33 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Démarche de suppression" ,
+  css: "connect/delete" } }) %>
+
+<main>
+  <section class="body__main__delete">
+    <h1 class="body__main__delete__h1">Étape finale</h1>
+    <p class="body__main__delete__p">
+      Vous êtes sur le point de procéder à la suppression de votre compte.
+      Veuillez confirmer cette action en cliquant sur le bouton dédié ci-dessous. <br>
+      <span>Veuillez noter que cette action est irréversible.</span> <br>
+      Si vous souhaitez annuler la suppression de votre compte, il vous suffit de fermer cette page.
+    </p>
+    <span class="body__main__delete__action">Supprimer mon compte</span>
+  </section>
+
+  <% if (data.popup?.status) { %>
+  <section class="body__main__popup">
+    <div class="body__main__popup__content">
+      <h2>Suppression effectué</h2>
+      <p>
+        La suppression de votre compte a été effectuée avec succès. <br>
+        Nous vous encourageons à nous faire part de la raison de cette action afin que nous puissions améliorer nos services. <br>
+        Vous serez automatiquement redirigé vers la page d'accueil dans 3 secondes.
+      </p>
+    </div>
+  </section>
+  <% } %>
+
+  <script src="/jquery.js"></script>
+  <script src="/connect/delete.js"></script>
+</main>
+
+<%- include('../base/footer') %>

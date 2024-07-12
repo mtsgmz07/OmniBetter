@@ -1,0 +1,518 @@
+@import url("/more.css");
+
+main {
+    padding: 0 250px 100px 250px;
+}
+
+small:empty,
+label:empty {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__path__findClient {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+}
+
+.body__main__path__findClient__inputFind {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 60px;
+    width: 100%;
+}
+
+.body__main__path__findClient__inputFind label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__path__findClient__inputFind input::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.body__main__path__findClient__inputFind input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body__main__path__findClient__inputFind input:focus {
+    border: 1px solid var(--orange);
+}
+
+.body__main__path__findClient__findByRole,
+.body__main__popup__content__form__selectRole {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+.body__main__path__findClient__findByRole__placeholder,
+.body__main__popup__content__form__selectRole__placeholder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a4046;
+    color: #fff;
+    height: 60px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.body__main__path__findClient__findByRole__placeholder i.active,
+.body__main__popup__content__form__selectRole__placeholder i.active {
+    transform: rotate(180deg);
+}
+
+.body__main__path__findClient__findByRole__select,
+.body__main__popup__content__form__selectRole__select {
+    position: absolute;
+    top: 115%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #3a4046;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    z-index: 99;
+}
+
+.body__main__path__findClient__findByRole__select.active,
+.body__main__popup__content__form__selectRole__select.active {
+    display: flex;
+}
+
+.body__main__path__findClient__findByRole__select a,
+.body__main__popup__content__form__selectRole__select span {
+    padding: 10px;
+    text-align: center;
+    transition: all .1s linear;
+    background-color: #3a4046;
+}
+
+.body__main__popup__content__form__selectRole__select span {
+    cursor: pointer;
+}
+
+.body__main__path__findClient__findByRole__select a:hover,
+.body__main__popup__content__form__selectRole__select span:hover {
+    background-color: #ffffff5e;
+}
+
+.body__main__anyAccount {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 200px 0;
+    display: none;
+}
+
+.body__main__anyAccount.active {
+    display: block;
+}
+
+.body__main__users {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 80px;
+}
+
+.body__main__users__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all .1s linear;
+}
+
+.body__main__users__container:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--orange);
+}
+
+.body__main__users__container__content {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__users__container__content__title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.body__main__users__container__content p {
+    line-height: 30px;
+}
+
+.body__main__users__container__icon i {
+    font-size: 100px;
+    color: #fff;
+}
+
+.body__main__users__container__action {
+    width: 250px;
+}
+
+.body__main__users__container__action a {
+    background-color: var(--orange);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body__main__arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 50px;
+}
+
+.body__main__arrow__left,
+.body__main__arrow__rigth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.body__main__arrow__left a,
+.body__main__arrow__rigth a {
+    background-color: var(--orange);
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: all .1s linear;
+}
+
+.body__main__arrow__left a:hover {
+    transform: translateX(-5px);
+}
+
+.body__main__arrow__rigth a:hover {
+    transform: translateX(5px);
+}
+
+.body__main__user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.body__main__user__userInformation,
+.body__main__user__manageUser {
+    width: 50%;
+}
+
+.body__main__user__userInformation__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.body__main__user__userInformation__h2,
+.body__main__user__manageUser__h2,
+.body__main__popup__content__h2 {
+    font-size: 40px;
+    color: var(--orange);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.body__main__user__userInformation__form__nameAndSurname {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.body__main__user__separation {
+    height: auto;
+    width: 1px;
+    background-color: #ffffff21;
+    margin: 0 100px;
+}
+
+.body__main__user__manageUser__manager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.body__main__user__manageUser__manager span {
+    border-radius: 5px;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all .1s linear;
+}
+
+.body__main__user__manageUser__manager span:hover {
+    transform: translateY(-5px);
+}
+
+.body__main__user__manageUser__manager__editEmail,
+.body__main__user__manageUser__manager__editPassword,
+.body__main__user__manageUser__manager__editRole {
+    background-color: var(--orange);
+}
+
+.body__main__user__manageUser__manager__deleteAccount {
+    background-color: var(--red);
+}
+
+.body__main__popup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.486);
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 9999;
+}
+
+.body__main__popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: #495057;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #fff;
+    padding: 50px;
+    width: 600px;
+}
+
+.body__main__popup__content__h2 {
+    font-style: normal;
+    margin-bottom: 10px;
+}
+
+.body__main__popup__content__form,
+.body__main__popup__content__form__email {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.body__main__popup__content__form__submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.body__main__popup__content__form__submit input {
+    background-color: var(--orange);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+
+.body__main__popup__content__form__submit input:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+.body__main__popup__content__form__submit input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__popup__content__check,
+.body__main__popup__content__closeWindow {
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    transition: all .1s linear;
+    text-align: center;
+}
+
+.body__main__popup__content__check {
+    background-color: var(--green);
+}
+
+.body__main__popup__content__closeWindow {
+    background-color: var(--red);
+    cursor: pointer;
+}
+
+.body__main__popup__content__form__selectRole {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 100px 15px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .body__main__user {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body__main__user__userInformation,
+    .body__main__user__manageUser {
+        width: 100%;
+    }
+
+    .body__main__user__separation {
+        height: 1px;
+        width: 100%;
+        margin: 50px 0;
+    }
+}
+
+@media screen and (max-width: 813px) {
+    .body__main__popup__content {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        width: calc(100% - 40px);
+    }
+
+    .body__main__popup__content__h2 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .body__main__path__findClient {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .body__main__path__findClient__findByRole {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .body__main__path {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .body__main__anyAccount {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .body__main__path {
+        overflow: auto;
+    }
+
+    .body__main__path::-webkit-scrollbar {
+        height: 2px;
+    }
+}

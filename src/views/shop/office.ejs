@@ -1,0 +1,45 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Nos ordinateurs bureautique" ,
+  css: "shop/office" } }) %>
+
+<main>
+  <img class="body__main__img" src="/upload/ingenieur-barbu-dans-son-bureau-domicile-nuit-travaillant-mecanisme-engrenage.jpg" alt="ingenieur-barbu-dans-son-bureau-domicile-nuit-travaillant-mecanisme-engrenage.jpg">
+  <h1 class="body__main__h1">Pc bureautique</h1>
+  <section class="body__main__office">
+    <% data.allDesktop.forEach(desktop => { %>
+    <article class="body__main__office__container">
+      <a href="/shop/product/<%= desktop.id %>" class="body__main__office__container__article">
+        <div class="body__main__office__container__article__picture">
+          <img src="<%= desktop.image.link %>" alt="image.png">
+        </div>
+        <div class="body__main__office__container__article__title">
+          <h3><%= desktop.name %></h3>
+        </div>
+        <section class="body__main__office__container__article__configuration">
+          <div class="body__main__office__container__article__configuration__cpu">
+            <img src="/upload/icons8-processor-32.png" alt="image.png">
+            <p><%= desktop.config.processor %></p>
+          </div>
+          <div class="body__main__office__container__article__configuration__gpu">
+            <img src="/upload/icons8-gpu-32.png" alt="image.png">
+            <p><%= desktop.config.graphic %></p>
+          </div>
+          <div class="body__main__office__container__article__configuration__ram">
+            <img src="/upload/icons8-ram-32.png" alt="image.png">
+            <p><%= desktop.config.ram %></p>
+          </div>
+          <div class="body__main__office__container__article__configuration__ssd">
+            <img src="/upload/icons8-ssd-32.png" alt="image.png">
+            <p><%= desktop.config.storage %></p>
+          </div>
+        </section>
+        <section class="body__main__office__container__article__price">
+          <p><%= desktop.price %> &euro;</p>
+          <span><%= desktop.category %></span>
+        </section>
+      </a>
+    </article>
+    <% }) %>
+  </section>
+</main>
+
+<%- include('../base/footer') %>

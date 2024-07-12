@@ -1,0 +1,107 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Inscription" ,
+  css: "gateway/signup" } }) %>
+
+<main>
+  <section class="body__main__signup">
+    <section class="body__main__signup__left">
+      <h1 class="body__main__signup__left__h1">Inscrivez-vous</h1>
+      <p class="body__main__signup__left__p">
+        Nous vous invitons à <span>créer votre compte</span> dès maintenant et à profiter d'une remise de <span>10 euros</span> sur votre première commande.<br>
+        Nous sommes impatients de vous accueillir au sein de <span>notre communauté</span> et de vous offrir une expérience d'achat agréable et sécurisée.<br>
+        Si vous rencontrez <span>des difficultés</span> lors de la création de votre compte, n'hésitez pas à <span>contacter notre service</span> de support dédié.<br>
+        Notre équipe sera ravie de <span>répondre à vos questions</span> et de faire de son mieux pour répondre à vos besoins.
+      </p>
+    </section>
+    <section class="body__main__signup__rigth">
+      <form action="/signup?redirect_url=<%= data.redirect_url %>" method="post" class="body__main__signup__rigth__form">
+        <section class="body__main__signup__rigth__form__nameAndSurname">
+          <div class="body__main__signup__rigth__form__nameAndSurname__inputName">
+            <label for="inputNameId">Prénom</label>
+            <input type="text" id="inputNameId" name="inputName" required maxlength="50" placeholder="Votre prénom" autocomplete="given-name" value="<% if(data?.value?.inputName) {%><%= data?.value?.inputName %><%} %>">
+            <small class="small__form__inputName"><% if(data?.error?.inputName) {%><%= data?.error?.inputName %><%} %></small>
+          </div>
+          <div class="body__main__signup__rigth__form__nameAndSurname__inputSurname">
+            <label for="inputSurnameId">Nom de famille</label>
+            <input type="text" id="inputSurnameId" name="inputSurname" required maxlength="50" placeholder="Votre nom de famille" autocomplete="family-name" value="<% if(data?.value?.inputSurname) {%><%= data?.value?.inputSurname %><%} %>">
+            <small class="small__form__inputSurname"><% if(data?.error?.inputSurname) {%><%= data?.error?.inputSurname %><%} %></small>
+          </div>
+        </section>
+
+        <div class="body__main__signup__rigth__form__inputEmail">
+          <label for="inputEmailId">Adresse e-mail</label>
+          <input type="email" maxlength="255" id="inputEmailId" name="inputEmail" required placeholder="Votre adresse e-mail" autocomplete="email" value="<% if(data?.value?.inputEmail) {%><%= data?.value?.inputEmail %><%} %>">
+          <small class="small__form__inputEmail"><% if(data?.error?.inputEmail) {%><%= data?.error?.inputEmail %><%} %></small>
+        </div>
+
+        <section class="body__main__signup__rigth__form__phone">
+          <label for="inputPhoneId">Numéro de téléphone</label>
+          <section class="body__main__signup__rigth__form__phone__inputPhone">
+            <section class="body__main__signup__rigth__form__phone__inputPhone__flag">
+              <div class="body__main__signup__rigth__form__phone__inputPhone__flag__placeholder">
+                <% if (data?.value?.isoPhone === "fr" || !data?.value?.isoPhone) { %>
+                <img src="/upload/france.webp" alt="france.webp" value="fr">
+                <% } %>
+                <% if (data?.value?.isoPhone && data?.value?.isoPhone === "be") { %>
+                <img src="/upload/belgique.png" alt="belgique.png" value="be">
+                <% } %>
+                <% if (data?.value?.isoPhone && data?.value?.isoPhone === "ch") { %>
+                <img src="/upload/suisse.png" alt="suisse.png" value="ch">
+                <% } %>
+                <i class="fa-solid fa-caret-down"></i>
+              </div>
+              <div class="body__main__signup__rigth__form__phone__inputPhone__flag__content">
+                <% if (data?.value?.isoPhone === "fr" || !data?.value?.isoPhone) { %>
+                <img src="/upload/belgique.png" alt="belgique.png" value="be">
+                <img src="/upload/suisse.png" alt="suisse.png" value="ch">
+                <% } %>
+                <% if (data?.value?.isoPhone && data?.value?.isoPhone === "be") { %>
+                <img src="/upload/france.webp" alt="france.webp" value="fr">
+                <img src="/upload/suisse.png" alt="suisse.png" value="ch">
+                <% } %>
+                <% if (data?.value?.isoPhone && data?.value?.isoPhone === "ch") { %>
+                <img src="/upload/belgique.png" alt="belgique.png" value="be">
+                <img src="/upload/france.webp" alt="france.webp" value="fr">
+                <% } %>
+              </div>
+            </section>
+            <input type="hidden" value="<% if(data?.value?.isoPhone) {%><%= data?.value?.isoPhone %><%} else {%>fr<%}%>" class="body__main__signup__rigth__form__phone__inputHidden" name="isoPhone">
+            <input type="number" required maxlength="15" id="inputPhoneId" name="inputPhone" placeholder="Votre numéro téléphone" autocomplete="tel" class="body__main__signup__rigth__form__phone__inputPhone__input" value="<% if(data?.value?.inputPhone) {%><%= data?.value?.inputPhone %><%} %>">
+          </section>
+          <small class="small__form__inputPhone"><% if(data?.error?.inputPhone) {%><%= data?.error?.inputPhone %><%} %></small>
+        </section>
+
+        <section class="body__main__signup__rigth__form__password">
+          <label for="inputPasswordId">Mot de passe</label>
+          <div class="body__main__signup__rigth__form__password__inputPassword">
+            <input type="password" maxlength="25" required placeholder="Votre mot de passe" id="inputPasswordId" name="inputPassword" autocomplete="new-password" value="<% if(data?.value?.inputPassword) {%><%= data?.value?.inputPassword %><%} %>">
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <small class="small__form__inputPassword"><% if(data?.error?.inputPassword) {%><%= data?.error?.inputPassword %><%} %></small>
+        </section>
+
+        <section class="body__main__signup__rigth__form__retypePassword">
+          <label for="inputRetypeId">Retapez le mot de passe</label>
+          <div class="body__main__signup__rigth__form__retypePassword__inputRetype">
+            <input type="password" maxlength="25" required placeholder="Retapez votre mot de passe" id="inputRetypeId" name="inputRetype" autocomplete="current-password">
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <small class="small__form__retypePassword"><% if(data?.error?.inputRetype) {%><%= data?.error?.inputRetype %><%} %></small>
+        </section>
+
+        <label for="checkboxInput" class="body__main__signup__rigth__form__save">Accepter les conditons d'utilisations
+          <input type="checkbox" id="checkboxInput" name="checkboxCondition">
+          <span class="checkmark"></span>
+        </label>
+
+        <div class="body__main__signup__rigth__form__submit">
+          <input type="submit" value="M'inscrire" disabled>
+        </div>
+
+        <a href="/login?redirect_url=<%= data.redirect_url %>" class="body__main__signup__rigth__form__alreadyAccount">Vous avez déjà un compte ? Connectez-vous</a>
+      </form>
+    </section>
+  </section>
+  <script src="/gateway/signup.js"></script>
+</main>
+
+<%- include('../base/footer') %>

@@ -1,0 +1,37 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Vérification de votre adresse e-mail" ,
+  css: "gateway/verification" } }) %>
+
+<main>
+  <section class="body__main__verification">
+    <section class="body__main__verification__left">
+      <h1 class="body__main__verification__left__h1">Vérification</h1>
+      <p class="body__main__verification__left__p">
+        Un courriel a été envoyé à l'adresse électronique suivante : <span><%= data.value.email %></span>.<br>
+        Si vous n'avez pas encore reçu ce message, veuillez cliquer sur le bouton ci-dessous.
+      </p>
+      <span class="body__main__verification__left__response">L'email a été renvoyé avec succès</span>
+      <span class="body__main__verification__left__span">Me renvoyer l'email</span>
+    </section>
+    <section class="body__main__verification__rigth">
+      <form action="/signup" method="post" class="body__main__verification__rigth__form">
+        <div class="body__main__verification__rigth__form__input">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+          <input type="tel" maxlength="1" pattern="[0-9]" class="form-control">
+        </div>
+        <input type="hidden" value="<%= data.value.id %>" class="body__main__verification__rigth__form__id" name="verificationId">
+        <p class="body__main__verification__rigth__form__p">Entrer votre code ci-dessus</p>
+      </form>
+    </section>
+  </section>
+  <div class="body__main__loading">
+    <i class="fa-solid fa-spinner createStripe"></i>
+  </div>
+  <script src="/jquery.js"></script>
+  <script src="/gateway/verification.js"></script>
+</main>
+
+<%- include('../base/footer') %>

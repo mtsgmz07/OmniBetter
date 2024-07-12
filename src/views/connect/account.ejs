@@ -1,0 +1,57 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Mon compte" ,
+  css: "connect/account" } }) %>
+
+<main class="active">
+  <div class="body__main__title">
+    <h1 class="body__main__title__h1">Mon compte</h1>
+    <a class="body__main__title__logout" href="/connect/logout">Déconnexion</a>
+  </div>
+
+  <% if (data.connect?.role === 2) { %>
+  <a href="/admin/home" class="body__main__admin">
+    <h2 class="body__main__admin__h2">Gestion de OmniBetter</h2>
+  </a>
+  <% } %>
+
+  <section class="body__main__account">
+    <a href="/connect/account/view/command" class="body__main__account__container">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <h3>Mes commandes</h3>
+      <p>Accédez en temps réel au suivi de vos commandes pour rester informé(e) de leur statut actuel.</p>
+    </a>
+    <a href="/connect/account/edit/email" class="body__main__account__container">
+      <i class="fa-solid fa-envelope"></i>
+      <h3>Adresse e-mail</h3>
+      <p>Accédez au formulaire de modification de votre adresse e-mail.</p>
+    </a>
+    <a href="/connect/account/edit/password" class="body__main__account__container">
+      <i class="fa-solid fa-lock"></i>
+      <h3>Mot de passe</h3>
+      <p>Accédez au formulaire de modification de votre mot de passe.</p>
+    </a>
+    <a href="/contact" class="body__main__account__container">
+      <i class="fa-solid fa-phone"></i>
+      <h3>Support</h3>
+      <p>Contactez le support technique.</p>
+    </a>
+    <div class="body__main__account__container deleteAccount">
+      <i class="fa-solid fa-trash"></i>
+      <h3>Suppression</h3>
+      <p>Supprimez le compte. Veuillez noter que cette étape est irréversible.</p>
+    </div>
+  </section>
+
+  <% if (data.popup?.status) { %>
+  <section class="body__main__popup">
+    <div class="body__main__popup__content">
+      <h2><%= data.popup?.h2 %></h2>
+      <p><%= data.popup?.p %></p>
+      <a href="">Fermer la fenêtre</a>
+    </div>
+  </section>
+  <% } %>
+  <script src="/jquery.js"></script>
+  <script src="/connect/account.js"></script>
+</main>
+
+<%- include('../base/footer') %>

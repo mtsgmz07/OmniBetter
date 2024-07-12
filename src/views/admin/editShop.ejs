@@ -1,0 +1,245 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Modification d'un article" ,
+  css: "admin/editShop" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Boutique</h1>
+  <input type="hidden" value="<%= data.desktop.desktop_id %>" class="desktop_id">
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span><a href="/admin/shop">Boutique</a><span>/</span><%= data?.desktop.title %></p>
+  <span class="body__main__deleteDesktop">Supprimer <%= data.desktop.title %></span>
+  <section class="body__main__editDesktop">
+    <section class="body__main__editDesktop__image">
+      <h2 class="body__main__editDesktop__image__h2">Image</h2>
+      <div class="body__main__editDesktop__image__check">
+        <p>Les images ont bien été mises à jour !</p>
+      </div>
+      <div class="body__main__editDesktop__image__filepond">
+        <input type="file" required class="filepond" name="editImage" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="5" data-type="fr-FR" accept="image/jpeg, image/png, image/jpg">
+        <small class="small__form__filepond"></small>
+      </div>
+      <div class="body__main__editDesktop__image__submit disabled">
+        <button disabled>Valider</button>
+      </div>
+    </section>
+    <div class="body__main__editDesktop__verticalSeparation"></div>
+    <section class="body__main__editDesktop__information">
+      <h2 class="body__main__editDesktop__information__h2">Information</h2>
+      <div class="body__main__editDesktop__information__check">
+        <p>Les informations ont bien été mises à jour !</p>
+      </div>
+      <section class="body__main__editDesktop__information__manager">
+        <section class="body__main__editDesktop__information__manager__selectCategory">
+          <section class="body__main__editDesktop__information__manager__selectCategory__placeholder">
+            <label for="categoryId">Catégorie de l'ordinateur</label>
+            <div class="body__main__editDesktop__information__manager__selectCategory__placeholder__content">
+              <% 
+                let placeholderEditCategory;
+                if(data.desktop.category === 0) placeholderEditCategory = "Pc Gaming"  
+                else if(data.desktop.category === 1) placeholderEditCategory = "Pc Bureatique"  
+                else placeholderEditCategory = "Choississez la catégorie"  
+                %>
+              <p><%= placeholderEditCategory %></p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <small class="small__form__category"></small>
+          </section>
+          <div class="body__main__editDesktop__information__manager__selectCategory__select">
+            <span aria-value="0">Pc gaming</span>
+            <span aria-value="1">Pc bureautique</span>
+          </div>
+          <input type="hidden" value="<%= data.desktop.category %>" name="editCategory" id="editCategoryId" class="body__main__editDesktop__information__manager__selectCategory__select__editCategory">
+        </section>
+        <div class="body__main__editDesktop__information__manager__title inputText">
+          <label for="editTitleId">Nom de l'ordinateur</label>
+          <input type="text" value="<%= data.desktop.title %>" name="editTitle" id="editTitleId" placeholder="Entrer le nom de l'ordinateur" maxlength="100" minlength="1">
+          <small class="small__form__editTitle"></small>
+        </div>
+        <div class="body__main__editDesktop__information__manager__description inputTextarea">
+          <label for="editDescriptionId">Description de l'ordinateur</label>
+          <textarea minlength="10" maxlength="2048" name="editDescription" id="editDescriptionId" cols="30" rows="10" placeholder="Entrer la description de l'ordinateur"><%= data.desktop.description %></textarea>
+          <small class="small__form__editDescription"></small>
+        </div>
+        <div class="body__main__editDesktop__information__manager__price inputText">
+          <label for="editPriceId">Prix de l'ordinateur</label>
+          <input type="text" value="<%= (data.desktop.price / 100).toFixed(2) %>" id="editPriceId" name="editPrice" placeholder="Entrer le prix de l'ordinateur">
+          <small class="small__form__editPrice"></small>
+        </div>
+      </section>
+      <div class="body__main__editDesktop__information__submit">
+        <button disabled>Valider</button>
+      </div>
+    </section>
+    <div class="body__main__editDesktop__verticalSeparation"></div>
+    <section class="body__main__editDesktop__component">
+      <h2 class="body__main__editDesktop__component__h2">Composants</h2>
+      <div class="body__main__editDesktop__component__check">
+        <p>Les informations ont bien été mises à jour !</p>
+      </div>
+      <div class="body__main__editDesktop__component__error">
+        <p>Une erreur vient de survenir, veuillez ressayer ultérieurement</p>
+      </div>
+      <section class="body__main__editDesktop__component__manager">
+        <div class="body__main__editDesktop__component__manager__editCase inputText">
+          <label for="editCaseId">Boitier de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editCaseId" name="editCase" placeholder="Entrer le boitier de l'ordinateur" value="<%= data.desktop?.config?.case %>">
+          <small class="small__form__editCase"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editProcessor inputText">
+          <label for="editProcessorId">Processeur de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editProcessorId" name="editProcessor" placeholder="Entrer le processeur de l'ordinateur" value="<%= data.desktop?.config?.processor %>">
+          <small class="small__form__editProcessor"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editMotherBoard inputText">
+          <label for="editMotherBoardId">Carte mère de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editMotherBoardId" name="editMotherBoard" placeholder="Entrer la carte mère de l'ordinateur" value="<%= data.desktop?.config?.motherboard %>">
+          <small class="small__form__editMotherBoard"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editGraphic inputText">
+          <label for="editGraphicId">Carte graphique de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editGraphicId" name="editGraphic" placeholder="Entrer la carte graphique de l'ordinateur" value="<%= data.desktop?.config?.graphic %>">
+          <small class="small__form__editGraphic"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editRam inputText">
+          <label for="editRamId">Mémoire vive</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editRamId" name="editRam" placeholder="Entrer la mémoire vive l'ordinateur" value="<%= data.desktop?.config?.ram %>">
+          <small class="small__form__editRam"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editCooling inputText">
+          <label for="editCoolingId">Système de refroidissement</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editCoolingId" name="editCooling" placeholder="Entrer le système de refroidissement de l'ordinateur" value="<%= data.desktop?.config?.cooling %>">
+          <small class="small__form__editCooling"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editStorage inputText">
+          <label for="editStorageId">Stockage de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editStorageId" name="editStorage" placeholder="Entrer le stockage de l'ordinateur" value="<%= data.desktop?.config?.storage %>">
+          <small class="small__form__editStorage"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editPowerSupply inputText">
+          <label for="editPowerSupplyId">Alimentation de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editPowerSupplyId" name="editPowerSupply" placeholder="Entrer l'alimentation de l'ordinateur" value="<%= data.desktop?.config?.powerSupply %>">
+          <small class="small__form__editPowerSupply"></small>
+        </div>
+
+        <div class="body__main__editDesktop__component__manager__editOs inputText">
+          <label for="editOsId">Système d'exploitation de l'ordinateur</label>
+          <input type="text" maxlength="100" required autocomplete="on" id="editOsId" name="editOs" placeholder="Entrer le système d'exploitation de l'ordinateur" value="<%= data.desktop?.config?.os %>">
+          <small class="small__form__editOs"></small>
+        </div>
+      </section>
+      <div class="body__main__editDesktop__component__manager__submit">
+        <button disabled>Valider</button>
+      </div>
+    </section>
+    <div class="body__main__editDesktop__verticalSeparation"></div>
+    <section class="body__main__editDesktop__game">
+      <h2 class="body__main__editDesktop__game__h2">Test en jeux</h2>
+      <div class="body__main__editDesktop__game__check">
+        <p>Les informations ont bien été mises à jour !</p>
+      </div>
+      <div class="body__main__editDesktop__game__error">
+        <p>Une erreur vient de survenir, veuillez ressayer ultérieurement</p>
+      </div>
+      <section class="body__main__editDesktop__game__manager">
+        <div class="body__main__editDesktop__game__manager__editfortnitehigh inputText">
+          <label for="editFortniteHighId">Fortnite élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editFortniteHighId" name="editfortnitehigh" placeholder="Entrez le nombre de fps de Fortnite en élevé" value="<%= data?.desktop?.game?.fortnite?.high %>">
+          <small class="small__form__editfortnitehigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editfortniteultra inputText">
+          <label for="editFortniteUltraId">Fortnite ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editFortniteUltraId" name="editfortniteultra" placeholder="Entrez le nombre de fps de Fortnite en ultra" value="<%= data?.desktop?.game?.fortnite?.ultra %>">
+          <small class="small__form__editfortniteultra"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editapexhigh inputText">
+          <label for="editApexHighId">Apex élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editApexHighId" name="editapexhigh" placeholder="Entrez le nombre de fps d'Apex Legends en élevé" value="<%= data?.desktop?.game?.apex?.high %>">
+          <small class="small__form__editapexhigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editapexultra inputText">
+          <label for="editApexUltraId">Apex ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editApexUltraId" name="editapexultra" placeholder="Entrez le nombre de fps d'Apex Legends en ultra" value="<%= data?.desktop?.game?.apex?.ultra %>">
+          <small class="small__form__editapexultra"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editvaloranthigh inputText">
+          <label for="editValorantHighId">Valorant élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editValorantHighId" name="editvaloranthigh" placeholder="Entrez le nombre de fps de Valorant en élevé" value="<%= data?.desktop?.game?.valorant?.high %>">
+          <small class="small__form__editvaloranthigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editvalorantultra inputText">
+          <label for="editValorantUltraId">Valorant ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editValorantUltraId" name="editvalorantultra" placeholder="Entrez le nombre de fps de Valorant en ultra" value="<%= data?.desktop?.game?.valorant?.ultra %>">
+          <small class="small__form__editvalorantultra"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editcyberpunkhigh inputText">
+          <label for="editCyberpunkHighId">CyberPunk 2077 élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editCyberpunkHighId" name="editcyberpunkhigh" placeholder="Entrez le nombre de fps de CyberPunk 2077 en élevé" value="<%= data?.desktop?.game?.cyberpunk?.high %>">
+          <small class="small__form__editcyberpunkhigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editcyberpunkultra inputText">
+          <label for="editCyberpunkUltraId">CyberPunk 2077 ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editCyberpunkUltraId" name="editcyberpunkultra" placeholder="Entrez le nombre de fps de CyberPunk 2077 en ultra" value="<%= data?.desktop?.game?.cyberpunk?.ultra %>">
+          <small class="small__form__editcyberpunkultra"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editbattlefieldhigh inputText">
+          <label for="editbattlefieldhighId">Battlefield élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editbattlefieldhighId" name="editbattlefieldhigh" placeholder="Entrez le nombre de fps de Rainbow Six Siege en élevé" value="<%= data?.desktop?.game?.rainbowsix?.high %>">
+          <small class="small__form__editbattlefieldhigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editbattlefieldultra inputText">
+          <label for="editbattlefieldultraId">Battlefield ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editbattlefieldultraId" name="editbattlefieldultra" placeholder="Entrez le nombre de fps de Rainbow Six Siege en ultra" value="<%= data?.desktop?.game?.rainbowsix?.ultra %>">
+          <small class="small__form__editbattlefieldultra"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editrainbowsixhigh inputText">
+          <label for="editRainbowsixHighId">Rainbow Six Siege élevé</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editRainbowsixHighId" name="editrainbowsixhigh" placeholder="Entrez le nombre de fps de Rainbow Six Siege en élevé" value="<%= data?.desktop?.game?.rainbowsix?.high %>">
+          <small class="small__form__editrainbowsixhigh"></small>
+        </div>
+
+        <div class="body__main__editDesktop__game__manager__editrainbowsixultra inputText">
+          <label for="editRainbowsixUltraId">Rainbow Six Siege ultra</label>
+          <input type="number" maxlength="3" required autocomplete="on" id="editRainbowsixUltraId" name="editrainbowsixultra" placeholder="Entrez le nombre de fps de Rainbow Six Siege en ultra" value="<%= data?.desktop?.game?.rainbowsix?.ultra %>">
+          <small class="small__form__editrainbowsixultra"></small>
+        </div>
+      </section>
+      <div class="body__main__editDesktop__game__manager__submit">
+        <button disabled>Valider</button>
+      </div>
+    </section>
+  </section>
+  <script src="/filepond/filepond-plugin-file-validate-type.js"></script>
+  <script src="/filepond/filepond-plugin-file-encode.js"></script>
+  <script src="/filepond/filepond-plugin-image-preview.js"></script>
+  <script src="/filepond/filepond.js"></script>
+  <script src="/filepond/filepond-plugin-file-metadata.js"></script>
+  <script src="/filepond/filepond-plugin-file-poster.js"></script>
+  <script src="/function/filepond.js"></script>
+  <script src="/jquery.js"></script>
+  <% if (data.desktop) { %>
+  <% data.desktop.image.sort((a, b) => b.index - a.index).forEach(image => { %>
+  <script>
+    filePondInput.addFile("<%= image.link %>")
+  </script>
+  <% }) %>
+  <% } %>
+  <script src="/admin/editShop.js"></script>
+</main>
+
+
+<%- include('../base/footer') %>

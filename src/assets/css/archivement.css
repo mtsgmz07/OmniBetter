@@ -1,0 +1,80 @@
+main {
+    padding: 0 250px;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__small {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    font-size: 16px;
+    color: #fff;
+}
+
+.body__main__archivement {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
+    margin: 50px 0;
+}
+
+.body__main__archivement__container {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000033;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #fff;
+    overflow: hidden;
+    transition: all .2s linear;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.body__main__archivement__container:hover {
+    background-color: var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__archivement__container__p {
+    margin: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .body__main__small {
+        font-size: 14px;
+    }
+}

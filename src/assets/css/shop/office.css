@@ -1,0 +1,149 @@
+main {
+    padding: 0 250px;
+}
+
+.body__main__img {
+    box-sizing: border-box;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    padding-top: 50px;
+    margin-bottom: 60px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+
+.body__main__office {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.body__main__office__container {
+    border: 2px solid #00000033;
+    padding: 40px 30px;
+    border-radius: 25px;
+    transition: all .2s linear;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__office__container:hover {
+    border: 2px solid var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__office__container__article__picture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.body__main__office__container__article__picture img {
+    height: 250px;
+    width: auto;
+}
+
+.body__main__office__container__article__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.body__main__office__container__article__configuration {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.body__main__office__container__article__configuration__cpu,
+.body__main__office__container__article__configuration__gpu,
+.body__main__office__container__article__configuration__ram,
+.body__main__office__container__article__configuration__ssd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.body__main__office__container__article__configuration__cpu img,
+.body__main__office__container__article__configuration__gpu img,
+.body__main__office__container__article__configuration__ram img,
+.body__main__office__container__article__configuration__ssd img {
+    height: 22px;
+    width: auto;
+}
+
+.body__main__office__container__article__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.body__main__office__container__article__price span {
+    background-color: var(--orange);
+    border-radius: 25px;
+    padding: 8px 15px;
+}
+
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .body__main__office {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .body__main__img {
+        height: 200px;
+    }
+
+    .body__main__office__container__article__picture img,
+    .body__main__officeComputer__manager__container__article__picture img {
+        height: 200px;
+    }
+
+    .body__main__office__container__article__price {
+        font-size: 14px;
+    }
+
+    .body__main__office__container__article__price span {
+        font-size: 14px;
+    }
+}

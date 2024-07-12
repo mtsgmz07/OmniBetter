@@ -1,0 +1,267 @@
+main {
+    padding: 0 250px 200px 250px;
+}
+
+.tippy-box[data-inertia][data-state='visible'] {
+    transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
+}
+
+.tippy-box {
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: var(--font);
+    text-align: center;
+}
+
+.tippy-arrow {
+    color: #333;
+}
+
+.tippy-arrow::after {
+    border-color: #333;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__commands {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.body__main__commands__container {
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    border-radius: 5px;
+    transition: all .1s linear;
+}
+
+.body__main__commands__container:hover {
+    border: 1px solid var(--orange);
+}
+
+.body__main__commands__container__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body__main__commands__container__info__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #fff;
+}
+
+.body__main__commands__container__info__left__h2 {
+    font-size: 30px;
+}
+
+.body__main__commands__container__info__left__h2 .status0,
+.body__main__commands__container__info__left__h2 .status1,
+.body__main__commands__container__info__left__h2 .status2 {
+    color: var(--orange);
+}
+
+.body__main__commands__container__info__left__h2 .status3 {
+    color: var(--green);
+}
+
+.body__main__commands__container__info__left__reference,
+.body__main__commands__container__info__left__deliveryAddress,
+.body__main__commands__container__info__left__total,
+.body__main__commands__container__article__container__info__price,
+.body__main__commands__container__article__container__info__quantity,
+.body__main__commands__container__article__container__info__assembly {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.body__main__commands__container__info__rigth {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+.body__main__commands__container__info__rigth a {
+    background-color: var(--orange);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.body__main__commands__container__info__rigth__downloadInvoice.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__commands__container__info__rigth__delivery.disabledTracker {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__commands__container__article {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__commands__container__article__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body__main__commands__container__article__container__left {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.body__main__commands__container__article__container__image img {
+    height: 200px;
+    width: auto;
+}
+
+.body__main__commands__container__article__container__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.body__main__commands__container__article__container__rigth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+
+.body__main__commands__container__article__container__rigth a {
+    background-color: var(--orange);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.body__main__anyCommand {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 100px;
+    color: #fff;
+}
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 200px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 200px 15px;
+    }
+}
+
+@media screen and (max-width: 870px) {
+
+    .body__main__commands__container__info,
+    .body__main__commands__container__article__container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .body__main__commands__container__info__left,
+    .body__main__commands__container__info__rigth,
+    .body__main__commands__container__article__container__left,
+    .body__main__commands__container__article__container__rigth {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .body__main__commands__container {
+        padding: 20px 30px;
+    }
+
+    .body__main__commands__container__info__left__h2 {
+        font-size: 25px;
+    }
+
+    .body__main__commands__container__article__container__image img {
+        height: 160px;
+        width: auto;
+    }
+
+    .body__main__commands__container__article__container__info__title {
+        font-size: 16px;
+    }
+
+    .body__main__commands__container__info__left__reference,
+    .body__main__commands__container__info__left__deliveryAddress,
+    .body__main__commands__container__info__left__total,
+    .body__main__commands__container__article__container__info__price,
+    .body__main__commands__container__article__container__info__quantity {
+        font-size: 14px;
+    }
+
+    .body__main__commands__container__article__container__left {
+        gap: 0;
+    }
+
+    .body__main__commands__container__article__container__image img {
+        display: none;
+    }
+
+    .body__main__anyCommand {
+        font-size: 30px;
+    }
+}

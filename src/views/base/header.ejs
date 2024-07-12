@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= header.title %></title>
+  <link rel="canonical" href="/">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="OmniBetter excelle dans la fabrication sur mesure de PC Gamer, offrant une personnalisation complète pour répondre à vos besoins spécifiques. Notre équipe d'ingénieurs dévoués sélectionne méticuleusement chaque composant pour garantir des performances optimales. Chaque PC est assemblé avec une expertise technique, assurant une expérience de jeu fluide et fiable.">
+  <meta name="keywords" content="ordinateur de bureau, ordinateur gaming, PC bureautique, PC gaming, ordinateur pré-monté, configuration gaming, configuration bureautique, matériel informatique, composants PC, gaming professionnel, jeux vidéo, performance informatique, multitâches, productivité, conception graphique, développement de logiciels, streaming, gaming compétitif, haute performance, gaming en ligne, eSports">
+  <meta name="author" content="OmniBetter">
+  <meta property="og:title" content="Votre PC Gamer idéal, c'est chez OmniBetter !">
+  <meta property="og:description" content="OmniBetter excelle dans la fabrication sur mesure de PC Gamer, offrant une personnalisation complète pour répondre à vos besoins spécifiques. Notre équipe d'ingénieurs dévoués sélectionne méticuleusement chaque composant pour garantir des performances optimales. Chaque PC est assemblé avec une expertise technique, assurant une expérience de jeu fluide et fiable.">
+  <meta property="og:image" content="/upload/logo.png">
+  <meta property="og:url" content="https://omnibetter.fr/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Votre PC Gamer idéal, c'est chez OmniBetter !">
+  <meta name="twitter:description" content="OmniBetter excelle dans la fabrication sur mesure de PC Gamer, offrant une personnalisation complète pour répondre à vos besoins spécifiques. Notre équipe d'ingénieurs dévoués sélectionne méticuleusement chaque composant pour garantir des performances optimales. Chaque PC est assemblé avec une expertise technique, assurant une expérience de jeu fluide et fiable.">
+  <meta name="twitter:image" content="/upload/logo.png">
+  <meta name="twitter:url" content="https://omnibetter.fr/">
+  <link rel="stylesheet" href="/base/header.css">
+  <link rel="stylesheet" href="/base/footer.css">
+  <link rel="stylesheet" href="/<%= header.css %>.css">
+  <link rel="icon" href="/upload/OmniBetter.png" type="image/png">
+  <script src="https://kit.fontawesome.com/38e38eb36a.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/swiper/swiper.min.css" />
+  <link rel="stylesheet" href="/swiper/navigation.min.css" />
+  <link rel="stylesheet" href="/swiper/pagination.min.css" />
+  <link href="/filepond/filepond.css" rel="stylesheet" />
+  <link href="/filepond/filepond-plugin-image-preview.css" rel="stylesheet" />
+  <link href="/filepond/filepond-plugin-file-poster.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/tippy/scale.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/" class="header__nav__logo">
+        <img src="/upload/logo.png" alt="logo.png">
+      </a>
+      <div class="header__nav__middle">
+        <a href="/shop/gaming">PC Gaming</a>
+        <a href="/shop/office">PC Bureautique</a>
+        <a href="/archivement">Nos réalisations</a>
+        <a href="/contact">Nous contacter</a>
+      </div>
+      <section class="header__nav__gateway">
+        <a href="/basket" class="header__nav__gateway__basket">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <p><%= !data?.basket?.length ? "0" : data?.basket?.length %></p>
+        </a>
+        <% if (data.connect) { %>
+        <div class="header__nav__gateway__connexion">
+          <a href="/connect/account">Mon compte</a>
+        </div>
+        <% } else { %>
+        <div class="header__nav__gateway__connexion">
+          <a href="/login">Se connecter</a>
+        </div>
+        <% } %>
+      </section>
+      <button class="header__nav__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <menu>
+      <div class="header__menu__redirect">
+        <a href="/shop/gaming">PC Gaming</a>
+        <a href="/shop/office">PC Bureautique</a>
+        <a href="/archivement">Nos réalisations</a>
+        <a href="/contact">Nous contacter</a>
+      </div>
+      <% if (data.connect) { %>
+      <div class="header__menu__gateway__connexion">
+        <a href="/connect/account">Mon compte</a>
+      </div>
+      <% } else { %>
+      <div class="header__menu__gateway__connexion">
+        <a href="/login">Se connecter</a>
+      </div>
+      <% } %>
+    </menu>
+    <script src="/base/header.js"></script>
+  </header>
+</body>
+
+</html>

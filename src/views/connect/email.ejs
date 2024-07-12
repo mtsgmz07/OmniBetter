@@ -1,0 +1,74 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Modification de l'adresse e-mail" ,
+  css: "connect/email" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Adresse e-mail</h1>
+  <p class="body__main__path"><a href="/connect/account">Mon compte</a><span>/</span>Adresse e-mail</p>
+  <section class="body__main__email">
+    <form action="/connect/account/edit/email" class="body__main__email__form" method="post">
+      <% if (data.check?.status) { %>
+      <div class="body__main__email__form__check">
+        <p><%= data.check?.value %></p>
+      </div>
+      <% } %>
+      <% if (data.errorForm?.status) { %>
+      <div class="body__main__email__form__error">
+        <p><%- data.errorForm?.value %></p>
+      </div>
+      <% } %>
+      <div class="body__main__email__form__newEmail">
+        <label for="inputNewEmailId">Nouvelle adresse e-mail</label>
+        <input <%= data.check?.disabled ? "disabled" : "" %> type="email" maxlength="255" required placeholder="Votre nouvelle adresse e-mail" autocomplete="email" name="inputNewEmail" id="inputNewEmailId" value="<%= data.value?.inputNewEmail %>">
+        <small class="small__form__inputNewEmail"><%= data.errorForm?.inputNewEmail %></small>
+      </div>
+
+      <section class="body__main__email__form__password">
+        <label for="inputPasswordId">Mot de passe actuel</label>
+        <div class="body__main__email__form__password__input">
+          <input <%= data.check?.disabled ? "disabled" : "" %> type="password" required placeholder="Votre mot de passe" autocomplete="current-password" maxlength="25" name="inputPassword" id="inputPasswordId">
+          <i class="fa-solid fa-eye-slash"></i>
+        </div>
+        <small class="small__form__inputPassword"><%= data.errorForm?.inputPassword %></small>
+      </section>
+
+      <div class="body__main__email__form__submit">
+        <input disabled type="submit" value="Modifier">
+      </div>
+    </form>
+    <div class="body__main__separation"></div>
+    <section class="body__main__email__form__history">
+      <h2 class="body__main__email__form__history__h2">Historique de modification</h2>
+      <section class="body__main__email__form__history__manager">
+        <% data.history.forEach(emailHistory => { %>
+        <section class="body__main__email__form__history__manager__container">
+          <div class="body__main__email__form__history__manager__container__left">
+            <i class="fa-solid fa-arrow-right"></i>
+            <p><%= emailHistory.email %></p>
+          </div>
+          <% 
+            function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            hours = (hours <= 9) ? `0${hours}` : hours;
+            minutes = (minutes <= 9) ? `0${minutes}` : minutes;
+            const formattedDay = (day <= 9) ? `0${day}` : day;
+            const formattedMonth = (month <= 9) ? `0${month}` : month;
+            const formattedDate = `${formattedDay}/${formattedMonth}/${year} ${hours}:${minutes}`;
+            return formattedDate;
+            }
+            const date = new Date(emailHistory.create_time);
+            const formattedDate = formatDate(date);
+          %>
+          <p class="body__main__email__form__history__manager__container__rigth"><%= formattedDate %></p>
+        </section>
+        <% }) %>
+      </section>
+    </section>
+  </section>
+  <script src="/connect/email.js"></script>
+</main>
+
+<%- include('../base/footer') %>

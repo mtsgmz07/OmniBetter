@@ -1,0 +1,22 @@
+<%- include('base/header', { header: { title: "OmniBetter - Nos réalisations" ,
+  css: "archivement" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Nos réalisations</h1>
+  <small class="body__main__small">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    Réalisations de nos dernières commandes (photo réalisée avec le consentement des clients)
+  </small>
+
+  <section class="body__main__archivement">
+    <% data.allArchivement.forEach(archivement => { %>
+    <div class="body__main__archivement__container">
+      <img src="<%= archivement.image[0].link %>" alt="realisation.jpg">
+      <p class="body__main__archivement__container__p">Réalisation effectué le : <%= archivement.create_time %></p>
+    </div>
+    <% }) %>
+  </section>
+</main>
+
+
+<%- include('base/footer') %>

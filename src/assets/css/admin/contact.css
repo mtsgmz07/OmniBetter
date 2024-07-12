@@ -1,0 +1,417 @@
+main {
+    padding: 0 250px 100px 250px;
+}
+
+small:empty {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 50px;
+}
+
+.body__main__arrow__left,
+.body__main__arrow__rigth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.body__main__arrow__left a,
+.body__main__arrow__rigth a {
+    background-color: var(--orange);
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: all .1s linear;
+}
+
+.body__main__arrow__left a:hover {
+    transform: translateX(-5px);
+}
+
+.body__main__arrow__rigth a:hover {
+    transform: translateX(5px);
+}
+
+.body__main__anyEmail {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 200px 0;
+}
+
+.body__main__manager {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.body__main__manager__container {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .1s linear;
+}
+
+.body__main__manager__container:hover {
+    border: 1px solid var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__manager__container__reason {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.body__main__manager__container__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.body__main__manager__container__message {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.body__main__response {
+    display: flex;
+    flex-direction: row;
+}
+
+.body__main__response__author,
+.body__main__response__admin {
+    width: 50%;
+}
+
+.body__main__response__author__h2,
+.body__main__response__admin__h2 {
+    font-size: 40px;
+    color: var(--orange);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.body__main__response__admin__check {
+    background-color: var(--green);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.body__main__response__author__form,
+.body__main__response__admin__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.body__main__response__author__form__nameAndSurname {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.body__main__response__author__form__nameAndSurname__name,
+.body__main__response__author__form__nameAndSurname__surname,
+.body__main__response__author__form__sendType,
+.body__main__response__author__form__message,
+.body__main__response__admin__form__email,
+.body__main__response__admin__form__response {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__response__author__form__nameAndSurname__name label,
+.body__main__response__author__form__nameAndSurname__surname label,
+.body__main__response__author__form__sendType label,
+.body__main__response__author__form__message label,
+.body__main__response__admin__form__email label,
+.body__main__response__admin__form__response label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__response__author__form__nameAndSurname__name input,
+.body__main__response__author__form__nameAndSurname__surname input,
+.body__main__response__author__form__sendType input,
+.body__main__response__admin__form__email input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body__main__response__author__form__message textarea,
+.body__main__response__admin__form__response textarea {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.body__main__response__author__form__nameAndSurname__name input::placeholder,
+.body__main__response__author__form__nameAndSurname__surname input::placeholder,
+.body__main__response__author__form__sendType input::placeholder,
+.body__main__response__admin__form__email input::placeholder,
+.body__main__response__author__form__message textarea::placeholder,
+.body__main__response__admin__form__response textarea::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.body__main__response__admin__form__response textarea:focus {
+    border: 1px solid var(--orange);
+}
+
+.body__main__response__separation {
+    height: auto;
+    width: 1px;
+    background-color: #ffffff21;
+    margin: 0 100px;
+}
+
+.body__main__response__admin__form__submit input {
+    background-color: var(--orange);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    padding: 13px 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+
+.body__main__response__admin__form__submit input:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+.body__main__response__author__form__nameAndSurname__name input,
+.body__main__response__author__form__nameAndSurname__surname input,
+.body__main__response__author__form__sendType input,
+.body__main__response__admin__form__email input,
+.body__main__response__author__form__message textarea,
+.body__main__response__admin__form__response textarea:disabled {
+    cursor: not-allowed;
+}
+
+.body__main__response__admin__form__submit input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__response__admin__form__delete {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.body__main__response__admin__form__delete__firstAction,
+.body__main__response__admin__form__delete__action__confirm,
+.body__main__response__admin__form__delete__action__cancel {
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: all .1s linear;
+    box-sizing: border-box;
+}
+
+.body__main__response__admin__form__delete__action__confirm {
+    background-color: var(--green);
+}
+
+.body__main__response__admin__form__delete__firstAction,
+.body__main__response__admin__form__delete__action__cancel {
+    background-color: var(--red);
+}
+
+.body__main__response__admin__form__delete__firstAction:hover {
+    transform: translateX(5px);
+}
+
+.body__main__response__admin__form__delete__action__confirm:hover,
+.body__main__response__admin__form__delete__action__cancel:hover {
+    transform: translateY(-5px);
+}
+
+.body__main__response__admin__form__delete__action {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    display: none;
+}
+
+.body__main__response__admin__form__delete__action.active {
+    display: flex;
+}
+
+.body__main__response__admin__form__delete__result {
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px; 
+    color: #fff;
+    transition: all .1s linear;
+}
+
+.body__main__response__admin__form__delete__result.check {
+    background-color: var(--green);
+}
+
+.body__main__response__admin__form__delete__result.error {
+    background-color: var(--red);
+}
+
+.body__main__response__admin__form__delete__result:empty {
+    display: none;
+}
+
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 100px 15px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .body__main__response {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body__main__response__author,
+    .body__main__response__admin {
+        width: 100%;
+    }
+
+    .body__main__response__separation {
+        height: 1px;
+        width: 100%;
+        margin: 50px 0;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .body__main__path {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .body__main__manager__container__head__date,
+    .body__main__manager__container__message {
+        font-size: 14px
+    }
+
+    .body__main__anyEmail {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .body__main__manager__container__head__date {
+        margin-left: auto;
+    }
+
+    .body__main__manager__container__head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .body__main__path {
+        font-size: 14px;
+    }
+}

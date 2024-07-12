@@ -1,0 +1,141 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des articles" ,
+  css: "admin/command" } }) %>
+
+<main>
+  <input type="hidden" value="<%= data.command.payment_id %>" class="paymentId">
+  <h1 class="body__main__h1">Gestion commande</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span><a href="/admin/command">Commandes</a><span>/</span><a href="/admin/command/active">Commandes actives</a><span>/</span><%= data.command.payment_id %></p>
+
+  <section class="body__main__informations">
+    <h2 class="body__main__informations__h2">Informations sur la commande</h2>
+    <div class="body__main__informations__manager">
+      <span class="body__main__informations__manager__createTime">Status la commande:<br><%= data.command.payment_status %></span>
+      <span class="body__main__informations__manager__address">Nom et prénom:<br><%= data.command.name %></span>
+      <span class="body__main__informations__manager__address">Adresse de livraison:<br><%= data.command.delivery %></span>
+      <span class="body__main__informations__manager__phone">Numéro de téléphone:<br><%= data.command.phone %></span>
+      <span class="body__main__informations__manager__phone">Code promotionnel:<br><%= data.command.code %></span>
+      <span class="body__main__informations__manager__totalAmount">Montant total:<br><%= data.command.totalAmount %> &euro;</span>
+    </div>
+  </section>
+
+  <section class="body__main__actions">
+    <h2 class="body__main__actions__h2">Actions disponible</h2>
+    <div class="body__main__actions__manager">
+      <span class="body__main__actions__manager__next <%= data.command.payment_status_number === 3 ? "disabled" : "" %>">Prochaine étape</span>
+      <a download="facture.pdf" class="body__main__actions__manager__invoice disabled">Création de la preuve d'achat</a>
+      <span class="body__main__actions__manager__delete">Supprimer la commande</span>
+    </div>
+  </section>
+
+
+  <% data.command.items.forEach(desktop => { %>
+  <section class="body__main__components">
+    <h2 class="body__main__components__h2"><%= desktop.title %></h2>
+    <div class="body__main__components__list">
+      <table class="body__main__components__list__table">
+        <tbody>
+          <tr>
+            <td>Montant total</td>
+            <td><%= desktop.totalAmountInText %> &euro;</td>
+          </tr>
+          <tr>
+            <td>Montant unité</td>
+            <td><%= desktop.price %> &euro;</td>
+          </tr>
+          <tr>
+            <td>Type de montage</td>
+            <td><%= desktop.assemblyInText %></td>
+          </tr>
+          <tr>
+            <td>Quantité</td>
+            <td><%= desktop.quantity %></td>
+          </tr>
+          <tr>
+            <td>Boitier Pc</td>
+            <td><%= desktop.config.case %></td>
+          </tr>
+          <tr>
+            <td>Processeur</td>
+            <td><%= desktop.config.processor %></td>
+          </tr>
+          <tr>
+            <td>Carte graphique</td>
+            <td><%= desktop.config.graphic %></td>
+          </tr>
+          <tr>
+            <td>Mémoire vive</td>
+            <td><%= desktop.config.ram %></td>
+          </tr>
+          <tr>
+            <td>Refroidissement</td>
+            <td><%= desktop.config.cooling %></td>
+          </tr>
+          <tr>
+            <td>Stockage</td>
+            <td><%= desktop.config.storage %></td>
+          </tr>
+          <tr>
+            <td>Alimentation</td>
+            <td><%= desktop.config.powerSupply %></td>
+          </tr>
+          <tr>
+            <td>Système d'exploitation</td>
+            <td><%= desktop.config.os %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <% }) %>
+  <script src="/jquery.js"></script>
+  <% if (data.command.payment_status_number !== 3) { %>
+  <% if (data.command.payment_status_number !== 1) { %>
+  <script>
+    document.querySelector(".body__main__actions__manager__next").addEventListener("click", () => {
+      if (confirm("Voulez-vous vraiment passer à l'étape suivante ?")) {
+        $.ajax({
+          url: "/admin/command/manage/" + document.querySelector(".paymentId").value + "/next",
+          type: "POST",
+          dataType: "json",
+          data: {},
+          success: function(data) {
+            alert("La commande est bien passée à l'étape suivante")
+            location.reload()
+          },
+          error: function(xhr, status, error) {
+            alert("Une erreur vient se survenir, veuillez ressayer ultérieurement")
+          }
+        });
+      }
+    })
+  </script>
+  <% } else { %>
+  <script>
+    document.querySelector(".body__main__actions__manager__next").addEventListener("click", () => {
+      if (confirm("Voulez-vous vraiment passer à l'étape suivante ?")) {
+        const getUrl = prompt("Veuillez saisir l'url de traking du colis")
+        if (!getUrl) return
+        $.ajax({
+          url: "/admin/command/manage/" + document.querySelector(".paymentId").value + "/next",
+          type: "POST",
+          dataType: "json",
+          data: {
+            url: getUrl
+          },
+          success: function(data) {
+            alert("La commande est bien passée à l'étape suivante")
+            location.reload()
+          },
+          error: function(xhr, status, error) {
+            alert("Une erreur vient se survenir, veuillez ressayer ultérieurement")
+          }
+        });
+      }
+    })
+  </script>
+  <% } %>
+  <% } %>
+  <script src="/admin/command.js"></script>
+</main>
+
+<%- include('../base/footer') %>

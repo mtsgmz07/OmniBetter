@@ -1,0 +1,50 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Connexion" ,
+  css: "gateway/login" } }) %>
+
+<main>
+  <section class="body__main__login">
+    <section class="body__main__login__left">
+      <h1 class="body__main__login__left__h1">Connectez-vous</h1>
+      <p class="body__main__login__left__p">
+        <span>Connectez-vous</span> à votre compte pour suivre l'évolution de vos commandes en toute simplicité.<br>
+        Nous tenons à vous garantir la <span>sécurité de vos données personnelles</span> ainsi que de <span>vos transactions financières</span>.<br>
+        En cas de problème sur votre compte, n'hésitez pas à <span>contacter notre service</span> de support dédié.<br>
+        Notre équipe sera ravie de répondre à vos questions et de s'efforcer de <span>satisfaire vos besoins</span>.
+      </p>
+    </section>
+    <section class="body__main__login__rigth">
+      <% if (data.error?.status) { %>
+      <div class="body__main__login__rigth__error">
+        <p><%= data.error?.value %></p>
+      </div>
+      <% } %>
+      <form action="/login?redirect_url=<%= data.redirect_url %>" method="post" class="body__main__login__rigth__form">
+        <div class="body__main__login__rigth__form__email">
+          <label for="inputEmailId">Adresse e-mail</label>
+          <input type="email" maxlength="255" required placeholder="Votre adresse e-mail" id="inputEmailId" name="inputEmail" autocomplete="email" value="<%= data.value?.inputEmail %>">
+        </div>
+        <section class="body__main__login__rigth__form__password">
+          <label for="inputPasswordId">Mot de passe</label>
+          <div class="body__main__login__rigth__form__password__input">
+            <input type="password" maxlength="25" required placeholder="Votre mot de passe" id="inputPasswordId" name="inputPassword" autocomplete="current-password">
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+          <a class="body__main__login__rigth__form__password__resetPassword" href="/reset-password">Mot de passe oublié ?</a>
+        </section>
+
+        <label for="checkboxInput" class="body__main__login__rigth__form__save">Souvenir de moi
+          <input type="checkbox" id="checkboxInput" name="saveMe">
+          <span class="checkmark"></span>
+        </label>
+
+        <div class="body__main__login__rigth__form__submit">
+          <input type="submit" value="Me connecter" disabled>
+        </div>
+
+        <a href="/signup?redirect_url=<%= data.redirect_url %>" class="body__main__login__rigth__anyAccount">Vous ne disposez pas encore d'un compte ? Créez le vôtre maintenant.</a>
+      </form>
+    </section>
+  </section>
+  <script src="/gateway/login.js"></script>
+</main>
+<%- include('../base/footer') %>

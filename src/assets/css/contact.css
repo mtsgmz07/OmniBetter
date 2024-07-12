@@ -1,0 +1,285 @@
+main {
+    padding: 0 250px;
+}
+
+small:empty {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.main__contact {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    margin-bottom: 100px;
+}
+
+.main__contact__left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main__contact__left h1 {
+    font-size: 80px;
+    color: var(--orange);
+}
+
+.main__contact__left p {
+    font-size: 18px;
+    color: #fff;
+    line-height: 30px;
+}
+
+.main__contact__left p span {
+    color: var(--orange);
+}
+
+.main__contact__rigth {
+    width: 50%;
+}
+
+.main__contact__rigth__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main__contact__rigth__form__check,
+.main__contact__rigth__form__error {
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 30px;
+}
+
+.main__contact__rigth__form__check {
+    background-color: var(--green);
+}
+
+.main__contact__rigth__form__error {
+    background-color: var(--red);
+}
+
+.main__contact__rigth__form__nameAndSurname {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.main__contact__rigth__form__nameAndSurname__name,
+.main__contact__rigth__form__nameAndSurname__surname,
+.main__contact__rigth__form__mail,
+.main__contact__rigth__form__message,
+.main__contact__rigth__form__requestType__placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main__contact__rigth__form__nameAndSurname__name label,
+.main__contact__rigth__form__nameAndSurname__surname label,
+.main__contact__rigth__form__mail label,
+.main__contact__rigth__form__requestType__placeholder,
+.main__contact__rigth__form__message label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.main__contact__rigth__form__nameAndSurname__name input,
+.main__contact__rigth__form__nameAndSurname__surname input,
+.main__contact__rigth__form__mail input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main__contact__rigth__form__nameAndSurname__name input::placeholder,
+.main__contact__rigth__form__nameAndSurname__surname input::placeholder,
+.main__contact__rigth__form__mail input::placeholder,
+.main__contact__rigth__form__message textarea::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.main__contact__rigth__form__nameAndSurname__name input:focus,
+.main__contact__rigth__form__nameAndSurname__surname input:focus,
+.main__contact__rigth__form__mail input:focus,
+.main__contact__rigth__form__message textarea:focus {
+    border: 1px solid var(--orange);
+}
+
+
+.main__contact__rigth__form__requestType {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.main__contact__rigth__form__requestType__placeholder__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 5px 20px;
+    height: 60px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main__contact__rigth__form__requestType__placeholder__content.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.main__contact__rigth__form__requestType__placeholder__content.active {
+    border: 1px solid var(--orange);
+}
+
+.main__contact__rigth__form__requestType__placeholder__content.active i.active {
+    transform: rotate(180deg);
+}
+
+.main__contact__rigth__form__requestType__placeholder__content p,
+.main__contact__rigth__form__requestType__placeholder__content i {
+    opacity: 0.8;
+}
+
+.main__contact__rigth__form__requestType__content {
+    background-color: #495057;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    z-index: 9;
+    display: none;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.main__contact__rigth__form__requestType__content.active {
+    display: block;
+}
+
+.main__contact__rigth__form__requestType__content p {
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.8;
+    transition: all .1s linear;
+    padding: 15px 20px;
+}
+
+.main__contact__rigth__form__requestType__content p:hover {
+    background-color: #ffffff42;
+}
+
+.main__contact__rigth__form__message textarea {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.main__contact__rigth__form__submit input {
+    background-color: var(--orange);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 0;
+    transition: all .1s linear;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main__contact__rigth__form__nameAndSurname__name input:disabled,
+.main__contact__rigth__form__nameAndSurname__surname input:disabled,
+.main__contact__rigth__form__mail input:disabled,
+.main__contact__rigth__form__message textarea:disabled,
+.main__contact__rigth__form__submit input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.main__contact__rigth__form__submit input:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .main__contact {
+        flex-direction: column;
+    }
+
+    .main__contact__left {
+        width: 100%;
+    }
+
+    .main__contact__rigth {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main__contact__left h1 {
+        font-size: 60px;
+    }
+}

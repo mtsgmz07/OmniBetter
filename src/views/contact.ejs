@@ -1,0 +1,83 @@
+<%- include('base/header', { header: { title: "OmniBetter - Contactez le support" ,
+  css: "contact" } }) %>
+
+<main>
+  <section class="main__contact">
+    <div class="main__contact__left">
+      <h1>Nous contacter</h1>
+      <p>
+        Notre support est disponible <span>24h/24</span>, <span>7j/7</span> pour vous assister à tout moment.<br>
+        Contactez-nous avec votre problème spécifique afin que nous puissions mieux comprendre la situation.<br>
+        Notre équipe dévouée est formée pour traiter une variété de problèmes afin de <span>garantir</span> une assistance complète.<br>
+        Votre satisfaction est notre priorité, et nous nous engageons à trouver des solutions <span>adaptées à vos besoins</span> spécifiques.<br>
+        Merci de faire confiance à notre support clientèle pour une <span>expérience optimale</span>.</p>
+    </div>
+    <div class="main__contact__rigth">
+      <form action="/contact" method="post" class="main__contact__rigth__form">
+        <% if (data.check?.status) { %>
+        <div class="main__contact__rigth__form__check">
+          <p>Le formulaire de contact a bien été envoyé !</p>
+        </div>
+        <% } %>
+
+        <% if (data.error?.status) { %>
+        <div class="main__contact__rigth__form__error">
+          <p><%= data.error?.value %></p>
+        </div>
+        <% } %>
+
+        <section class="main__contact__rigth__form__nameAndSurname">
+          <div class="main__contact__rigth__form__nameAndSurname__name">
+            <label for="inputNameId">Prénom</label>
+            <input <%= data.check?.disabled ? "disabled": "" %> type="text" maxlength="50" placeholder="Votre prénom" id="inputNameId" autocomplete="name" name="inputName" required value="<%= data.value?.inputName %>">
+            <small class="small__form__inputName"><%= data.errorForm?.inputName %></small>
+          </div>
+          <div class="main__contact__rigth__form__nameAndSurname__surname">
+            <label for="inputSurnameId">Nom de famille</label>
+            <input <%= data.check?.disabled ? "disabled": "" %> type="text" maxlength="50" placeholder="Votre nom de famille" id="inputSurnameId" autocomplete="family-name" name="inputSurname" required value="<%= data.value?.inputSurname %>">
+            <small class="small__form__inputSurname"><%= data.errorForm?.inputSurname %></small>
+          </div>
+        </section>
+
+        <div class="main__contact__rigth__form__mail">
+          <label for="inputEmailId">Adresse e-mail</label>
+          <input <%= data.check?.disabled ? "disabled": "" %> type="email" maxlength="255" placeholder="Votre adresse e-mail" id="inputEmailId" name="inputEmail" required autocomplete="email" value="<%= data.value?.inputEmail %>">
+          <small class="small__form__inputEmail"><%= data.errorForm?.inputEmail %></small>
+        </div>
+
+        <section class="main__contact__rigth__form__requestType">
+          <section class="main__contact__rigth__form__requestType__placeholder">
+            <div class="main__contact__rigth__form__requestType__placeholder__label">
+              <label for="inputReasonId">Raison du contact</label>
+            </div>
+            <div class="main__contact__rigth__form__requestType__placeholder__content <%= data.check?.disabled ? "disabled": "" %>">
+              <p>Choisissez une option</p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+          </section>
+          <small class="small__form__inputReason"><%= data.errorForm?.inputReason %></small>
+          <div class="main__contact__rigth__form__requestType__content">
+            <p>Demande de remboursement</p>
+            <p>Demande de partenariat</p>
+            <p>Ordinateur sur mesure</p>
+            <p>Question sur ma commande</p>
+            <p>Autres</p>
+          </div>
+          <input type="hidden" value="" name="inputReason" id="inputReasonId" class="main__contact__rigth__form__requestType__hidden" name="inputRequestType" required>
+        </section>
+
+        <div class="main__contact__rigth__form__message">
+          <label for="inputMessageId">Décrivez-nous votre demande</label>
+          <textarea <%= data.check?.disabled ? "disabled": "" %> id="inputMessageId" name="inputMessage" placeholder="Décrivez-nous votre demande" cols="30" rows="10" maxlength="2048" required autocomplete="on"><%= data.value?.inputSurname %></textarea>
+          <small class="small__form__inputMessage"><%= data.errorForm?.inputMessage %></small>
+        </div>
+
+        <div class="main__contact__rigth__form__submit">
+          <input type="submit" value="Envoyer" disabled>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script src="contact.js"></script>
+</main>
+<%- include('base/footer') %>

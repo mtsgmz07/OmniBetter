@@ -1,0 +1,611 @@
+@import url("/more.css");
+
+main {
+    padding: 0 250px 100px 250px;
+}
+
+small:empty,
+label:empty {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__path__findPromotion {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+}
+
+.body__main__path__findPromotion__inputFind {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 60px;
+    width: 100%;
+}
+
+.body__main__path__findPromotion__inputFind label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__path__findPromotion__inputFind input::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.body__main__path__findPromotion__inputFind input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body__main__path__findPromotion__inputFind input:focus {
+    border: 1px solid var(--orange);
+}
+
+.body__main__popup__content__form__selectType__placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__popup__content__form__selectType__placeholder label {
+    font-size: 18px;
+}
+
+.body__main__path__findPromotion__findByPromotion,
+.body__main__popup__content__form__selectType {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+.body__main__popup__content__form__selectType {
+    width: 100%;
+}
+
+.body__main__path__findPromotion__findByPromotion__placeholder,
+.body__main__popup__content__form__selectType__placeholder__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a4046;
+    color: #fff;
+    height: 60px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.body__main__popup__content__form__selectType__placeholder__content {
+    background-color: transparent;
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__popup__content__form__selectType__placeholder__content p {
+    font-size: 18px;
+}
+
+.body__main__path__findPromotion__findByPromotion__placeholder i.active,
+.body__main__popup__content__form__selectType__placeholder__content i.active {
+    transform: rotate(180deg);
+}
+
+.body__main__path__findPromotion__findByPromotion__select,
+.body__main__popup__content__form__selectType__select {
+    position: absolute;
+    top: 115%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #3a4046;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    z-index: 99;
+}
+
+.body__main__path__findPromotion__findByPromotion__select.active,
+.body__main__popup__content__form__selectType__select.active {
+    display: flex;
+}
+
+.body__main__path__findPromotion__findByPromotion__select a,
+.body__main__popup__content__form__selectType__select span {
+    padding: 10px;
+    text-align: center;
+    transition: all .1s linear;
+    background-color: #3a4046;
+    cursor: pointer;
+}
+
+.body__main__path__findPromotion__findByPromotion__select a:hover,
+.body__main__popup__content__form__selectType__select span:hover {
+    background-color: #ffffff5e;
+}
+
+.body__main__popup__content__form__condition,
+.body__main__popup__content__form__condition__limitUse,
+.body__main__popup__content__form__condition__minPrice {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__popup__content__form__condition__limitUse__input,
+.body__main__popup__content__form__condition__minPrice__input {
+    display: none;
+}
+
+.body__main__popup__content__form__condition__limitUse__input.active,
+.body__main__popup__content__form__condition__minPrice__input.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__anyPromotion {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 200px 0;
+    display: none;
+}
+
+.body__main__anyPromotion.active {
+    display: block;
+}
+
+.body__main__allPromotion {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 80px;
+}
+
+.body__main__allPromotion__addContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 362.33px;
+}
+
+.body__main__allPromotion__addContainer i {
+    font-size: 100px;
+    color: var(--orange);
+}
+
+.body__main__allPromotion__addContainer {
+    border: 2px solid #00000033;
+    padding: 50px 30px;
+    border-radius: 25px;
+    transition: all .2s linear;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__allPromotion__addContainer:hover {
+    border: 2px solid var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__allPromotion__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all .1s linear;
+}
+
+.body__main__allPromotion__container:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--orange);
+}
+
+.body__main__allPromotion__container__content {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__allPromotion__container__content__title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.body__main__allPromotion__container__content p {
+    line-height: 30px;
+}
+
+.body__main__allPromotion__container__icon i {
+    font-size: 100px;
+    color: #fff;
+}
+
+.body__main__allPromotion__container__action {
+    width: 250px;
+}
+
+.body__main__allPromotion__container__action button {
+    background-color: var(--red);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+}
+
+.body__main__arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 50px;
+}
+
+.body__main__arrow__left,
+.body__main__arrow__rigth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.body__main__arrow__left a,
+.body__main__arrow__rigth a {
+    background-color: var(--orange);
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: all .1s linear;
+}
+
+.body__main__arrow__left a:hover {
+    transform: translateX(-5px);
+}
+
+.body__main__arrow__rigth a:hover {
+    transform: translateX(5px);
+}
+
+.body__main__popup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.486);
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 9999;
+}
+
+.body__main__popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #495057;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #fff;
+    padding: 50px;
+    width: 600px;
+    overflow: auto;
+    max-height: 80%;
+}
+
+.body__main__popup__content__h2 {
+    font-size: 40px;
+    color: var(--orange);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.waitRequest {
+    display: none !important;
+    margin: auto;
+    font-size: 100px;
+    color: var(--orange);
+    animation: waitRequestAnimation 1.5s linear infinite;
+}
+
+.waitRequest.active {
+    display: block !important;
+}
+
+@keyframes waitRequestAnimation {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.body__main__popup__content__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.body__main__popup__content__check {
+    background-color: var(--green);
+    padding: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.body__main__popup__content__error {
+    background-color: var(--red);
+    padding: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.body__main__popup__content__check.active,
+.body__main__popup__content__error.active {
+    display: block;
+}
+
+.checkMarkCustom {
+    margin: 10px 0;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 15px;
+}
+
+.checkMarkCustom input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: -0.8px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    transform: scale(0.7);
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.checkMarkCustom:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.checkMarkCustom input:checked~.checkmark {
+    background-color: var(--orange);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkMarkCustom input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkMarkCustom .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.body__main__popup__content__form__submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.body__main__popup__content__form__submit button {
+    background-color: var(--orange);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+
+.body__main__popup__content__form__submit button:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+.body__main__popup__content__form__submit button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__popup__content__closeWindow {
+    background-color: var(--red);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    text-align: center;
+    transition: all .1s linear;
+}
+
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 100px 15px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .body__main__promotion {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body__main__promotion__promotionInformation,
+    .body__main__promotion__manageUser {
+        width: 100%;
+    }
+
+    .body__main__promotion__separation {
+        height: 1px;
+        width: 100%;
+        margin: 50px 0;
+    }
+}
+
+@media screen and (max-width: 813px) {
+    .body__main__popup__content {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        width: calc(100% - 40px);
+    }
+
+    .body__main__popup__content__h2 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .body__main__path__findPromotion {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .body__main__path__findPromotion__findByPromotion {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .body__main__path {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .body__main__anyPromotion {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .body__main__path {
+        overflow: auto;
+    }
+
+    .body__main__path::-webkit-scrollbar {
+        height: 2px;
+    }
+}

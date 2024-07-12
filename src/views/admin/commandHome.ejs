@@ -1,0 +1,28 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des commandes" ,
+  css: "admin/commandHome" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Commandes</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Commandes</p>
+
+  <section class="body__main__redirectCommand">
+    <a href="/admin/command/active" class="body__main__redirectCommand__container">
+      <i class="fa-solid fa-list-check"></i>
+      <h2>Commandes active</h2>
+      <p>Commande en cours de traitement.</p>
+    </a>
+    <a href="/admin/command/expired" class="body__main__redirectCommand__container">
+      <i class="fa-solid fa-clock"></i>
+      <h2>Anciennes commandes</h2>
+      <p>Ancienne commande, traitement final effectué.</p>
+    </a>
+    <a href="/admin/command/statistics" class="body__main__redirectCommand__container">
+      <i class="fa-solid fa-chart-column"></i>
+      <h2>Statistiques</h2>
+      <p>Statistique de vente, chiffre d'affaires et bénéfices classée par mois.</p>
+    </a>
+  </section>
+  <script src="/admin/command.js"></script>
+</main>
+
+<%- include('../base/footer') %>

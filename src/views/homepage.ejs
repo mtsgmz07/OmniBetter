@@ -1,0 +1,215 @@
+<%- include('base/header', { header: { title: "Votre PC Gamer idéal, c'est chez OmniBetter !" ,
+  css: "homepage" } }) %>
+
+<body>
+  <main>
+    <section class="body__main__presentation">
+      <img src="/upload/0BAB06B8-5FC6-482C-B1C3-BAFEE089AC77.jpg" alt="">
+    </section>
+
+    <section class="body__main__bestseller">
+      <h2 class="body__main__bestseller__title">Nos <span>meilleurs</span> ventes</h2>
+      <section class="swiperBestseller">
+        <section class="body__main__bestseller__manager">
+          <% data.allDesktop.sort((a, b) => a.use - b.use).forEach(desktop => { %>
+          <article class="body__main__bestseller__manager__container">
+            <a href="/shop/product/<%= desktop.id %>" class="body__main__bestseller__manager__container__article">
+              <div class="body__main__bestseller__manager__container__article__picture">
+                <img src="<%= desktop.image.link %>" alt="image.png">
+              </div>
+              <div class="body__main__bestseller__manager__container__article__title">
+                <h3><%= desktop.name %></h3>
+              </div>
+              <section class="body__main__bestseller__manager__container__article__configuration">
+                <div class="body__main__bestseller__manager__container__article__configuration__cpu">
+                  <img src="/upload/icons8-processor-32.png" alt="icons8-processor-32.png">
+                  <p><%= desktop.config.processor %></p>
+                </div>
+                <div class="body__main__bestseller__manager__container__article__configuration__gpu">
+                  <img src="/upload/icons8-gpu-32.png" alt="icons8-gpu-32.png">
+                  <p><%= desktop.config.graphic %></p>
+                </div>
+                <div class="body__main__bestseller__manager__container__article__configuration__ram">
+                  <img src="/upload/icons8-ram-32.png" alt="icons8-ram-32.png">
+                  <p><%= desktop.config.ram %></p>
+                </div>
+                <div class="body__main__bestseller__manager__container__article__configuration__ssd">
+                  <img src="/upload/icons8-ssd-32.png" alt="icons8-ssd-32.png">
+                  <p><%= desktop.config.storage %></p>
+                </div>
+              </section>
+              <section class="body__main__bestseller__manager__container__article__price">
+                <p><%= desktop.price %> &euro;</p>
+                <span><%= desktop.category %></span>
+              </section>
+            </a>
+          </article>
+          <% }) %>
+        </section>
+        <div class="swiper-paginationBestseller swiper-pagination"></div>
+      </section>
+    </section>
+
+
+    <section class="body__main__trustipilot">
+      <h2 class="body__main__trustipilot__title">Avis client</h2>
+      <section class="body__main__trustipilot__content">
+        <div class="body__main__trustipilot__content__left">
+          <p class="body__main__trustipilot__content__left__p">
+            Explorez les retours de nos clients et n'hésitez pas à nous enrichir de votre expérience en partageant vos impressions sur vos commandes.<br>
+            Votre feedback nous donne de l'élan. En cas de difficulté, contactez notre support à l'adresse suivante : <a href="mailto:support@omnibetter.fr">support@omnibetter.fr</a></span>
+          </p>
+          <a class="body__main__trustipilot__content__left__a" target="_blank" href="https://fr.trustpilot.com/review/omnibetter.fr">Découvrir nos avis</a>
+        </div>
+        <div class="body__main__trustipilot__content__rigth">
+          <img src="/upload/fb-trustpilot@2x.webp" alt="fb-trustpilot@2x.webp">
+        </div>
+      </section>
+    </section>
+
+    <section class="body__main__gamingComputer">
+      <h2 class="body__main__gamingComputer__title">Nos Ordinateurs <span>Gaming</span></h2>
+      <section class="swiperGamingComputer">
+        <section class="body__main__gamingComputer__manager">
+          <% data.allDesktop.filter(x => x.categoryInNumber === 0).forEach(desktop => { %>
+          <article class="body__main__gamingComputer__manager__container">
+            <a href="/shop/product/<%= desktop.id %>" class="body__main__gamingComputer__manager__container__article">
+              <div class="body__main__gamingComputer__manager__container__article__picture">
+                <img src="<%= desktop.image.link %>" alt="image.png">
+              </div>
+              <div class="body__main__gamingComputer__manager__container__article__title">
+                <h3><%= desktop.name %></h3>
+              </div>
+              <section class="body__main__gamingComputer__manager__container__article__configuration">
+                <div class="body__main__gamingComputer__manager__container__article__configuration__cpu">
+                  <img src="/upload/icons8-processor-32.png" alt="icons8-processor-32.png">
+                  <p><%= desktop.config.processor %></p>
+                </div>
+                <div class="body__main__gamingComputer__manager__container__article__configuration__gpu">
+                  <img src="/upload/icons8-gpu-32.png" alt="icons8-gpu-32.png">
+                  <p><%= desktop.config.graphic %></p>
+                </div>
+                <div class="body__main__gamingComputer__manager__container__article__configuration__ram">
+                  <img src="/upload/icons8-ram-32.png" alt="icons8-ram-32.png">
+                  <p><%= desktop.config.ram %></p>
+                </div>
+                <div class="body__main__gamingComputer__manager__container__article__configuration__ssd">
+                  <img src="/upload/icons8-ssd-32.png" alt="icons8-ssd-32.png">
+                  <p><%= desktop.config.storage %></p>
+                </div>
+              </section>
+              <section class="body__main__gamingComputer__manager__container__article__price">
+                <p><%= desktop.price %> &euro;</p>
+                <span><%= desktop.category %></span>
+              </section>
+            </a>
+          </article>
+          <% }) %>
+        </section>
+        <div class="swiper-paginationGamingComputer swiper-pagination"></div>
+      </section>
+    </section>
+
+    <section class="body__main__faq">
+      <h2 class="body__main__faq__title">Questions <span>fréquentes</span></h2>
+      <section class="body__main__faq__content">
+        <section class="body__main__faq__manager">
+          <section class="body__main__faq__manager__container">
+            <div class="body__main__faq__manager__container__title">
+              <i class="fa-solid fa-circle-plus"></i>
+              <i class="fa-solid fa-circle-minus"></i>
+              <p>Quel est le délai de livraison estimé pour ma commande ?</p>
+            </div>
+            <div class="body__main__faq__manager__container__value">
+              <p>Nos délais de livraison sont actuellement estimés entre 10 et 15 jours. Cette plage a été
+                soigneusement établie pour assurer la fiabilité et la qualité de chaque livraison. Nous sommes engagés
+                à fournir une expérience client exceptionnelle, et cette estimation reflète notre engagement envers
+                votre satisfaction. Pour toute information supplémentaire ou pour suivre votre commande, notre service
+                clientèle est à votre disposition de manière professionnelle.</p>
+            </div>
+          </section>
+          <section class="body__main__faq__manager__container">
+            <div class="body__main__faq__manager__container__title">
+              <i class="fa-solid fa-circle-plus"></i>
+              <i class="fa-solid fa-circle-minus"></i>
+              <p>Quelles garanties sont incluses avec l'achat ?</p>
+            </div>
+            <div class="body__main__faq__manager__container__value">
+              <p>En ce qui concerne la garantie, nous assurons un processus de retour dans un délai de 30 jours à
+                compter de la date d'achat. Les conditions de remboursement comprennent les situations où un composant
+                ne fonctionne pas correctement ou en cas d'envoi d'une configuration incorrecte. Veuillez noter que
+                nous ne remboursons pas en cas de défauts de livraison du PC à moins que cela ne corresponde aux
+                conditions spécifiées précédemment.</p>
+            </div>
+          </section>
+          <section class="body__main__faq__manager__container">
+            <div class="body__main__faq__manager__container__title">
+              <i class="fa-solid fa-circle-plus"></i>
+              <i class="fa-solid fa-circle-minus"></i>
+              <p>Quels logiciels / système d'exploitation sont préinstallés ?</p>
+            </div>
+            <div class="body__main__faq__manager__container__value">
+              <p>La configuration spécifique de votre ordinateur dépendra de l'option sélectionnée lors de la
+                commande. Dans le cadre de l'offre comprenant l'installation de Windows, les logiciels de base seront
+                automatiquement configurés par défaut. En optant pour l'offre avec optimisation, toutes les mises à
+                jour et l'installation des logiciels essentiels seront effectuées. De plus, trois jeux populaires du
+                moment seront inclus, sans frais supplémentaires.</p>
+            </div>
+          </section>
+          <section class="body__main__faq__manager__container">
+            <div class="body__main__faq__manager__container__title">
+              <i class="fa-solid fa-circle-plus"></i>
+              <i class="fa-solid fa-circle-minus"></i>
+              <p>Est-ce que cet ordinateur est évolutif ?</p>
+            </div>
+            <div class="body__main__faq__manager__container__value">
+              <p>L'ordinateur fourni offre une évolutivité complète, à l'exception des changements de socket ou de
+                l'ajout de composants excessivement puissants pour la configuration existante.</p>
+            </div>
+          </section>
+          <section class="body__main__faq__manager__container">
+            <div class="body__main__faq__manager__container__title">
+              <i class="fa-solid fa-circle-plus"></i>
+              <i class="fa-solid fa-circle-minus"></i>
+              <p>L'ordinateur est-il compatible avec la connectivité Wi-Fi ?</p>
+            </div>
+            <div class="body__main__faq__manager__container__value">
+              <p>La prise en charge de la connectivité Wi-Fi dépend de l'offre sélectionnée, et les détails
+                spécifiques sont indiqués dans la configuration de l'ordinateur.</p>
+            </div>
+          </section>
+        </section>
+        <img src="/upload/faq.jpg" alt="faq.jpg">
+      </section>
+    </section>
+
+    <section class="body__main__partener">
+      <h2 class="body__main__partener__title">Partenaire OmniBetter</h2>
+      <p class="body__main__partener__p">OmniBetter s'engage résolument à renforcer sa visibilité et à perfectionner
+        sa politique tarifaire en établissant des collaborations stratégiques avec des marques prestigieuses, toutes
+        orientées vers la quête de l'excellence. Cette démarche vise à consolider notre positionnement sur le marché
+        en tant que partenaire privilégié, offrant des solutions de qualité supérieure tout en contribuant activement
+        à la réussite de nos partenaires.</p>
+      <a class="body__main__partener__a" href="">Devenir partenaire</a>
+    </section>
+
+    <section class="body__main__compagny">
+      <section class="body__main__compagny__content">
+        <div class="body__main__compagny__content__left">
+          <h2 class="body__main__compagny__title">Ensembles <span>professionnels</span> sur mesure</h2>
+          <p>
+            Votre entreprise est à la recherche d'un lot d'ordinateurs destinés à la comptabilité ou à d'autres besoins professionnels ?<br>
+            Ne cherchez pas plus loin, car nous sommes là pour vous servir.<br>
+            Notre équipe de support est à votre disposition pour personnaliser un lot d'ordinateurs parfaitement adapté à vos activités professionnelles, le tout à un prix exceptionnel.<br>
+            Faites le choix de la performance et de la fiabilité avec nos solutions informatiques sur mesure.
+          </p>
+          <a href="/contact">En savoir plus</a>
+        </div>
+        <img src="/upload/madeToMeasure.jpg" alt="madeToMeasure.jpg">
+      </section>
+    </section>
+  </main>
+  <script src="/swiper/swiper-bundle.min.js"></script>
+  <script src="homepage.js"></script>
+  <%- include('base/footer') %>
+</body>

@@ -1,0 +1,169 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des promotions" ,
+  css: "admin/promotion" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Promotions</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Promotion</p>
+  <form action="" class="body__main__path__findPromotion">
+    <div class="body__main__path__findPromotion__inputFind">
+      <label for="findPromotionId"></label>
+      <input type="text" maxlength="255" name="findPromotion" id="findPromotionId" placeholder="Recherche par nom de promotion">
+    </div>
+
+    <section class="body__main__path__findPromotion__findByPromotion">
+      <div class="body__main__path__findPromotion__findByPromotion__placeholder">
+        <% 
+          let placeholderSelect;
+          switch(data.filter?.type) {
+            case "0":
+              placeholderSelect = "Ordre croissant"
+              break
+            case "1":
+              placeholderSelect = "Ordre décroissant"
+              break
+            default: placeholderSelect = "Filtre"
+          }
+        %>
+        <p><%= placeholderSelect %></p>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="body__main__path__findPromotion__findByPromotion__select">
+        <a href="/admin/promotion?filter=any">Aucun</a>
+        <a href="/admin/promotion?filter=0">Ordre croissant</a>
+        <a href="/admin/promotion?filter=1">Ordre décroissant</a>
+      </div>
+    </section>
+  </form>
+
+  <h2 class="body__main__anyPromotion">Aucune promotion trouvé</h2>
+  <section class="body__main__allPromotion">
+    <a href="/admin/promotion?create=0" class="body__main__allPromotion__addContainer">
+      <i class="fa-solid fa-plus"></i>
+    </a>
+    <% data.allPromotion?.forEach(promotion => { %>
+    <section class="body__main__allPromotion__container">
+      <div class="body__main__allPromotion__container__icon">
+        <i class="fa-solid fa-gift"></i>
+      </div>
+      <div class="body__main__allPromotion__container__content">
+        <p class="body__main__allPromotion__container__content__title"><%= promotion.code %></p>
+        <p>
+          Valeur: <%= promotion.value %><br>
+          Première commande: <%= promotion.firstCommand %><br>
+          Limite d'utilisation: <%= promotion.limitRedemption %><br>
+          Montant minimum: <%= promotion.minimumAmount %><br>
+          Créer le: <%= promotion.create_time %><br>
+          Expire le: <%= promotion.expire %><br>
+        </p>
+      </div>
+      <div class="body__main__allPromotion__container__action">
+        <button id="<%= promotion.code %>" value="<%= promotion.promotion_id %>">Supprimer</button>
+      </div>
+    </section>
+    <% }) %>
+  </section>
+
+  <% if (data.totalPromotion > 10) { %>
+  <section class="body__main__arrow">
+    <div class="body__main__arrow__left">
+      <a href="/admin/promotion=0<%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__start"><i class="fa-solid fa-angles-left"></i></a>
+      <a href="/admin/promotion?page=<%= data.arrow?.minus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main_0arrow__minus"><i class="fa-solid fa-chevron-left"></i></a>
+    </div>
+    <div class="body__main__arrow__rigth">
+      <a href="/admin/promotion?page=<%= data.arrow?.plus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__plus"><i class="fa-solid fa-chevron-right"></i></i></a>
+      <a href="/admin/promotion?page=<%= data.arrow?.end %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__arrow__end"><i class="fa-solid fa-angles-right"></i></a>
+    </div>
+  </section>
+  <% } %>
+
+  <% if (data.popup) { %>
+  <section class="body__main__popup">
+    <section class="body__main__popup__content">
+      <h2 class="body__main__popup__content__h2">Création d'une promotion</h2>
+      <i class="fa-solid fa-spinner waitRequest"></i>
+      <div class="body__main__popup__content__check">
+        <p>La promotion a été créer avec succès !</p>
+      </div>
+      <div class="body__main__popup__content__error">
+        <p>Une erreur vient de se produire, veuillez ressayer ultérieurement</p>
+      </div>
+      <section class="body__main__popup__content__form">
+        <div class="body__main__popup__content__form__code inputText">
+          <label for="codeId">Code promotionnel</label>
+          <input type="text" maxlength="20" required autocomplete="on" id="codeId" name="code" placeholder="Entrer le code promotionnel">
+          <small class="small__form__code"></small>
+        </div>
+
+        <section class="body__main__popup__content__form__selectType">
+          <section class="body__main__popup__content__form__selectType__placeholder">
+            <label for="typeId">Type de réduction</label>
+            <div class="body__main__popup__content__form__selectType__placeholder__content">
+              <p>Choississez le type de réduction</p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <small class="small__form__type"></small>
+          </section>
+          <div class="body__main__popup__content__form__selectType__select">
+            <span aria-value="0">Réduction en pourcentage</span>
+            <span aria-value="1">Réduction d'un montant fixe</span>
+          </div>
+          <input type="hidden" value="" name="type" id="typeId" class="body__main__popup__content__form__selectType__inputHidden">
+        </section>
+
+        <div class="body__main__popup__content__form__reduction inputText">
+          <label for="reductionId">Valeur réduite</label>
+          <input type="text" maxlength="10" required autocomplete="on" id="reductionId" name="reduction" placeholder="Entrer la valeur de la réduction">
+          <small class="small__form__reduction"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__expire inputText">
+          <label for="expireId">Date d'expiration</label>
+          <input type="datetime-local" required autocomplete="on" id="expireId" name="expire">
+          <small class="small__form__expire"></small>
+        </div>
+
+        <div class="body__main__popup__content__form__condition">
+          <label for="firstCommandId" class="checkMarkCustom">Utilisable uniquement lors de la première commande
+            <input type="checkbox" id="firstCommandId" name="firstCommand">
+            <span class="checkmark"></span>
+          </label>
+
+          <div class="body__main__popup__content__form__condition__limitUse">
+            <label for="limitUseId" class="checkMarkCustom">Limiter le nombre d'utilisation du code
+              <input type="checkbox" id="limitUseId" name="limitUseCheck">
+              <span class="checkmark"></span>
+            </label>
+            <div class="body__main__popup__content__form__condition__limitUse__input inputText">
+              <label for="limitUseInput"></label>
+              <input type="text" placeholder="Entrer le nombre d'utilisation maximum" id="limitUseInput" name="limitUse">
+              <small class="small__form__limitUse"></small>
+            </div>
+          </div>
+
+          <div class="body__main__popup__content__form__condition__minPrice">
+            <label for="minPriceId" class="checkMarkCustom">Exiger une valeur de commande minimale
+              <input type="checkbox" id="minPriceId" name="minPriceCheck">
+              <span class="checkmark"></span>
+            </label>
+            <div class="body__main__popup__content__form__condition__minPrice__input inputText">
+              <label for="minPriceInput"></label>
+              <input type="text" placeholder="Entrer la valeur minimale" id="minPriceInput" name="minPrice">
+              <small class="small__form__minPrice"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="body__main__popup__content__form__submit">
+          <button disabled>Créer la promotion</button>
+        </div>
+      </section>
+
+      <a href="/admin/promotion" class="body__main__popup__content__closeWindow">Fermer la fenêtre</a>
+    </section>
+  </section>
+  <% } %>
+  <script src="/jquery.js"></script>
+  <script src="/admin/promotion.js"></script>
+</main>
+
+<%- include('../base/footer') %>

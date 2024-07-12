@@ -1,0 +1,618 @@
+@import url("/more.css");
+
+main {
+    padding: 0 250px 100px 250px;
+}
+
+small:empty,
+label:empty {
+    display: none;
+}
+
+.filepond--credits {
+    display: none;
+}
+
+small {
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, .65);
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+}
+
+.body__main__h1 {
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.body__main__h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 4px;
+    width: 50%;
+    max-width: 130px;
+    min-width: 100px;
+    background: var(--orange);
+}
+
+.body__main__path {
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.body__main__path span {
+    margin: 0 10px;
+}
+
+.body__main__path a {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.body__main__findArticle {
+    display: flex;
+    flex-direction: row;
+    max-height: 60px;
+    gap: 50px;
+    width: 100%;
+}
+
+.body__main__findArticle__inputFind {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.body__main__findArticle__inputFind label,
+.body__main__popup__content__form__selectCategory__placeholder label,
+.body__main__editDesktop__information__manager__selectCategory__placeholder label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__findArticle__inputFind input::placeholder {
+    opacity: 0.8;
+    color: #fff;
+    font-family: var(--font);
+}
+
+.body__main__findArticle__inputFind input {
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 20px;
+    color: #fff;
+    transition: all .1s linear;
+    font-family: var(--font);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body__main__findArticle__inputFind input:focus {
+    border: 1px solid var(--orange);
+}
+
+.body__main__findArticle__findByCategory,
+.body__main__popup__content__form__selectCategory,
+.body__main__editDesktop__information__manager__selectCategory {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    position: relative;
+}
+
+.body__main__popup__content__form__selectCategory {
+    width: 100%;
+}
+
+.body__main__popup__content__form__selectCategory__placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__findArticle__findByCategory__placeholder,
+.body__main__popup__content__form__selectCategory__placeholder__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a4046;
+    color: #fff;
+    height: 60px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.body__main__popup__content__form__selectCategory__placeholder__content {
+    background-color: transparent;
+    border: 1px solid #00000033;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__popup__content__form__selectCategory__placeholder__content p {
+    font-size: 18px;
+}
+
+.body__main__findArticle__findByCategory__placeholder i.active,
+.body__main__popup__content__form__selectCategory__placeholder__content i.active {
+    transform: rotate(180deg);
+}
+
+.body__main__findArticle__findByCategory__select,
+.body__main__popup__content__form__selectCategory__select {
+    position: absolute;
+    top: 115%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #3a4046;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    z-index: 99;
+}
+
+.body__main__popup__content__form__selectCategory__select {
+    background-color: #495057;
+}
+
+.body__main__findArticle__findByCategory__select.active,
+.body__main__popup__content__form__selectCategory__select.active {
+    display: flex;
+}
+
+.body__main__findArticle__findByCategory__select a,
+.body__main__popup__content__form__selectCategory__select span {
+    padding: 10px;
+    text-align: center;
+    transition: all .1s linear;
+    background-color: #3a4046;
+    cursor: pointer;
+}
+
+.body__main__popup__content__form__selectCategory__select span {
+    font-size: 18px;
+}
+
+.body__main__findArticle__findByCategory__select a:hover,
+.body__main__popup__content__form__selectCategory__select span:hover {
+    background-color: #ffffff5e;
+}
+
+.body__main__article {
+    margin-top: 50px;
+}
+
+.body__main__article__manager {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.body__main__article__manager__addArticleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 385px;
+}
+
+.body__main__article__manager__addArticleContainer i {
+    font-size: 100px;
+    color: var(--orange);
+}
+
+.body__main__article__manager__container,
+.body__main__article__manager__addArticleContainer {
+    border: 2px solid #00000033;
+    padding: 50px 30px;
+    border-radius: 25px;
+    transition: all .2s linear;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body__main__article__manager__container:hover,
+.body__main__article__manager__addArticleContainer:hover {
+    border: 2px solid var(--orange);
+    transform: translateY(-5px);
+}
+
+.body__main__article__manager__container__article__picture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.body__main__article__manager__container__article__picture img {
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.body__main__article__manager__container__article__title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.body__main__article__manager__container__article__configuration {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.body__main__article__manager__container__article__configuration__cpu,
+.body__main__article__manager__container__article__configuration__gpu,
+.body__main__article__manager__container__article__configuration__ram,
+.body__main__article__manager__container__article__configuration__ssd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.body__main__article__manager__container__article__configuration__cpu img,
+.body__main__article__manager__container__article__configuration__gpu img,
+.body__main__article__manager__container__article__configuration__ram img,
+.body__main__article__manager__container__article__configuration__ssd img {
+    height: 25px;
+    width: auto;
+}
+
+.body__main__article__manager__container__article__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.body__main__article__manager__container__article__price span {
+    background-color: var(--orange);
+    border-radius: 25px;
+    padding: 8px 15px;
+}
+
+.body__main__article__arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    gap: 50px;
+}
+
+.body__main__article__arrow__left,
+.body__main__article__arrow__rigth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.body__main__article__arrow__left a,
+.body__main__article__arrow__rigth a {
+    background-color: var(--orange);
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: all .1s linear;
+}
+
+.body__main__article__arrow__left a:hover {
+    transform: translateX(-5px);
+}
+
+.body__main__article__arrow__rigth a:hover {
+    transform: translateX(5px);
+}
+
+.body__main__popup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.486);
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 9999;
+}
+
+.body__main__popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #495057;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #fff;
+    padding: 50px;
+    width: 600px;
+    overflow: auto;
+    max-height: 81%;
+}
+
+.body__main__popup__content__h2 {
+    font-size: 40px;
+    color: var(--orange);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.waitRequest {
+    display: none !important;
+    margin: auto;
+    font-size: 100px;
+    color: var(--orange);
+    animation: waitRequestAnimation 1.5s linear infinite;
+}
+
+.waitRequest.active {
+    display: block !important;
+}
+
+@keyframes waitRequestAnimation {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.body__main__popup__content__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.body__main__popup__content__check {
+    background-color: var(--green);
+    padding: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.body__main__popup__content__check.active {
+    display: block;
+}
+
+.filepond--root {
+    font-family: var(--font2) !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+}
+
+.filepond--drop-label {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.filepond--panel-root {
+    background-color: transparent !important;
+    border: 1px solid #00000033;
+}
+
+.filepond--drop-label {
+    color: #fff !important;
+}
+
+.body__main__popup__content__form__priceOfProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body__main__popup__content__form__priceOfProduct label {
+    color: #fff;
+    font-size: 18px;
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-height: 60px;
+    height: 100%;
+    border: 1px solid #00000033;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .1s linear;
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice input {
+    border: none;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    padding: 5px 20px;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice input::placeholder {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice input:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice i {
+    color: #fff;
+    background-color: #3a4046;
+    height: 60px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+}
+
+.body__main__popup__content__form__priceOfProduct__inputPrice:focus-within {
+    border: 1px solid var(--orange);
+}
+
+.body__main__popup__content__form__game {
+    flex-direction: column;
+    gap: 20px;
+    display: none;
+}
+
+.body__main__popup__content__form__submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.body__main__popup__content__form__submit input {
+    background-color: var(--orange);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+
+.body__main__popup__content__form__submit input:not(:disabled):hover {
+    transform: translateY(-5px);
+}
+
+.body__main__popup__content__form__submit input:disabled,
+.body__main__popup__content__form__submit input.wait {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.body__main__popup__content__closeWindow {
+    background-color: var(--red);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    text-align: center;
+    transition: all .1s linear;
+}
+
+@media screen and (max-width: 1590px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    main {
+        padding: 0 15px 100px 15px;
+    }
+}
+
+@media screen and (max-width: 813px) {
+    .body__main__popup__content {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        width: calc(100% - 40px);
+        max-height: none;
+        height: 100%;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 50px 10px;
+    }
+
+    .body__main__popup__content__h2 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .body__main__article__manager__addArticleContainer i {
+        font-size: 70px;
+    }
+
+    .body__main__findArticle {
+        flex-direction: column;
+        gap: 30px;
+        max-height: none;
+    }
+
+    .body__main__findArticle__findByCategory {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .body__main__article__manager__container {
+        padding: 20px 30px;
+    }
+
+    .body__main__article__manager__container__article__picture img {
+        height: 150px;
+    }
+
+    .body__main__article__manager__container__article__title {
+        font-size: 18px;
+    }
+
+    .body__main__article__manager__container__article__configuration__cpu,
+    .body__main__article__manager__container__article__configuration__gpu,
+    .body__main__article__manager__container__article__configuration__ram,
+    .body__main__article__manager__container__article__configuration__ssd {
+        font-size: 14px;
+    }
+
+    .body__main__article__manager__container__article__configuration__cpu img,
+    .body__main__article__manager__container__article__configuration__gpu img,
+    .body__main__article__manager__container__article__configuration__ram img,
+    .body__main__article__manager__container__article__configuration__ssd img {
+        height: 23px;
+    }
+
+    .body__main__article__manager__container__article__price {
+        font-size: 14px;
+    }
+
+    .body__main__article__manager__container__article__price span {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,79 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Gestion des réalisationns" ,
+  css: "admin/archivement" } }) %>
+
+<main>
+  <h1 class="body__main__h1">Nos réalisations</h1>
+  <p class="body__main__path"><a href="/admin/home">Espace administrateur</a><span>/</span>Nos réalisations</p>
+
+  <section class="body__main__archivement">
+    <section class="body__main__archivement__manager">
+      <a href="/admin/archivement?create=0" class="body__main__archivement__manager__addArticleContainer">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+      <% data?.allArchivement?.forEach(archivement => { %>
+      <div class="body__main__archivement__manager__container">
+        <input type="hidden" value="<%= archivement.archivement_id %>" class="archivement_id">
+        <img src="<%= archivement.image[0].link %>" alt="realisation.jpg">
+        <p class="body__main__archivement__manager__container__p">Réalisation effectué le : <%= archivement.create_time %></p>
+        <i class="fa-solid fa-xmark body__main__archivement__manager__container__i"></i>
+      </div>
+      <% }) %>
+    </section>
+    <% if (data.totalArchivement > 10) { %>
+    <section class="body__main__archivement__arrow">
+      <div class="body__main__archivement__arrow__left">
+        <a href="/admin/archivement?page=0<%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__archivement__arrow__left__start"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="/admin/archivement?page=<%= data.arrow?.minus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__archivement__arrow__left__minus"><i class="fa-solid fa-chevron-left"></i></a>
+      </div>
+      <div class="body__main__archivement__arrow__rigth">
+        <a href="/admin/archivement?page=<%= data.arrow?.plus %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__archivement__arrow__rigth__plus"><i class="fa-solid fa-chevron-right"></i></i></a>
+        <a href="/admin/archivement?page=<%= data.arrow?.end %><%= data.filter?.type ? "&filter=" + data.filter?.type : "" %>" class="body__main__archivement__arrow__rigth__end"><i class="fa-solid fa-angles-right"></i></a>
+      </div>
+    </section>
+    <% } %>
+  </section>
+
+  <% if (data.popup) { %>
+  <section class="body__main__popup">
+    <section class="body__main__popup__content">
+      <h2 class="body__main__popup__content__h2">Création d'une réalisation</h2>
+      <i class="fa-solid fa-spinner waitRequest"></i>
+      <div class="body__main__popup__content__check">
+        <p>La réalisation a été créer avec succès !</p>
+      </div>
+      <div class="body__main__popup__content__error">
+        <p>Une erreur vient de survenir, veuillez ressayer ultérieurement</p>
+      </div>
+      <section class="body__main__popup__content__form">
+        <div class="body__main__popup__content__form__filepond">
+          <input type="file" required class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="1" data-type="fr-FR" accept="image/jpeg, image/png, image/jpg">
+        </div>
+
+        <div class="body__main__popup__content__form__submit">
+          <input type="submit" name="submitButton" value="Créer la réalisation" disabled>
+        </div>
+      </section>
+
+      <a href="/admin/archivement" class="body__main__popup__content__closeWindow">Fermer la fenêtre</a>
+    </section>
+  </section>
+  <% } %>
+  <script src="/filepond/filepond-plugin-file-validate-type.js"></script>
+  <script src="/filepond/filepond-plugin-file-encode.js"></script>
+  <script src="/filepond/filepond-plugin-image-preview.js"></script>
+  <script src="/filepond/filepond.js"></script>
+  <script src="/filepond/filepond-plugin-file-metadata.js"></script>
+  <script src="/filepond/filepond-plugin-file-poster.js"></script>
+  <script src="/function/filepond.js"></script>
+  <script src="/jquery.js"></script>
+  <script src="/admin/archivement.js"></script>
+  <% if (data.desktop) { %>
+  <% data.desktop.image.forEach(image => { %>
+  <script>
+    filePondInput.addFile("<%= image.link %>")
+  </script>
+  <% }) %>
+  <% } %>
+</main>
+
+<%- include('../base/footer') %>

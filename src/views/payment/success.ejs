@@ -1,0 +1,68 @@
+<%- include('../base/header', { header: { title: "OmniBetter - Merci de votre achat" ,
+  css: "payment/success" } }) %>
+
+<main>
+  <input type="hidden" value="<%= data.paymentId %>" class="paymentId">
+  <section class="body__main__payment">
+    <i class="fa-solid fa-circle-check rond"></i>
+    <h1 class="body__main__payment__h1">Paiement effectué avec succès !</h1>
+    <p class="body__main__payment__p">
+      Merci de votre commande, retouvez le récapitulatif de votre commande ci-dessous.<br>
+      En cas de problème n'hésitez pas a contacter notre support en cliquant <a href="/contact">ici</a> ou par email a <a href="mailto:support@omnibetter.fr">support@omnibetter.fr</a>
+    </p>
+
+    <section class="body__main__action">
+      <a href="" download="facture.pdf" class="body__main__action__downloadInvoice disabled">Création de la facture</a>
+      <a href="/contact" class="body__main__action__signal">Signaler un problème</a>
+    </section>
+
+    <table class="body__main__payment__table">
+      <tr class="body__main__payment__table__head">
+        <td class="body__main__payment__table__head__image">
+          Image
+        </td>
+        <td class="body__main__payment__table__head__name">
+          Nom
+        </td>
+        <td class="body__main__payment__table__head__assembly">
+          <p>Type de montage</p>
+        </td>
+        <td class="body__main__payment__table__head__quantity">
+          Quantité
+        </td>
+        <td class="body__main__payment__table__head__unitPrice">
+          Prix Unité
+        </td>
+        <td class="body__main__payment__table__head__totalAmount">
+          Prix Totale
+        </td>
+      </tr>
+
+      <% data.reformItems.forEach(desktop => { %>
+      <tr class="body__main__payment__table__content">
+        <td class="body__main__payment__table__content__image">
+          <img src="<%= desktop.image.link %>" alt="image">
+        </td>
+        <td class="body__main__payment__table__content__name">
+          <%= desktop.title %>
+        </td>
+        <td class="body__main__payment__table__content__assembly">
+          <%= desktop.assembly %>
+        </td>
+        <td class="body__main__payment__table__content__quantity">
+          <%= desktop.quantity %>
+        </td>
+        <td class="body__main__payment__table__content__price">
+          <%= desktop.price %> &euro;
+        </td>
+        <td class="body__main__payment__table__content__price">
+          <%= (desktop.totalAmount / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &euro;
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </section>
+  <script src="/jquery.js"></script>
+  <script src="/payment/success.js"></script>
+</main>
+<%- include('../base/footer') %>

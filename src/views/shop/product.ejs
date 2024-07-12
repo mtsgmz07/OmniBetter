@@ -1,0 +1,321 @@
+<%- include('../base/header', { header: { title: "OmniBetter - " + data.getDesktop.title ,
+  css: "shop/product" } }) %>
+
+<main>
+  <section class="body__main__presentation">
+    <section class="body__main__presentation__image">
+      <div class="swiper body__main__presentation__image__swiper">
+        <div class="swiper-wrapper">
+          <% data.getDesktop.image.sort((a, b) => a.index - b.index).forEach(image => { %>
+          <div class="swiper-slide">
+            <img src="<%= image.link %>" alt="img_0024_1_7.jpg">
+          </div>
+          <% }) %>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <section class="body__main__presentation__description">
+      <h1 class="body__main__presentation__description__h1"><%= data.getDesktop.title %></h1>
+      <p class="body__main__presentation__description__p"><%= data.getDesktop.description %></p>
+      <section class="body__main__presentation__description__components">
+        <div class="body__main__presentation__description__components__processor">
+          <img src="/upload/icons8-processor-32.png" alt="icons8-processor-32.png">
+          <p><%= data.getDesktop.config.processor %></p>
+        </div>
+        <div class="body__main__presentation__description__components__graphics">
+          <img src="/upload/icons8-gpu-32.png" alt="icons8-gpu-32.png">
+          <p><%= data.getDesktop.config.graphic %></p>
+        </div>
+        <div class="body__main__presentation__description__components__ram">
+          <img src="/upload/icons8-ram-32.png" alt="icons8-ram-32.png">
+          <p><%= data.getDesktop.config.ram %></p>
+        </div>
+        <div class="body__main__presentation__description__components__ssd">
+          <img src="/upload/icons8-ssd-32.png" alt="icons8-ssd-32.png">
+          <p><%= data.getDesktop.config.storage %></p>
+        </div>
+      </section>
+
+      <section class="body__main__separation" style="margin: 30px 0;"></section>
+
+      <section class="body__main__presentation__description__priceAndInfo">
+        <p class="body__main__presentation__description__priceAndInfo__price"><%= (data.getDesktop.price / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.') %> &#8364;</p>
+        <div class="body__main__presentation__description__priceAndInfo__info">
+          <img src="/upload/france.webp" alt="france.webp">
+          <p>Assemblé en France</p>
+        </div>
+      </section>
+
+      <section class="body__main__presentation__description__option">
+        <div class="body__main__presentation__description__option__placeholder">
+          <div class="body__main__presentation__description__option__placeholder__content">
+            <p>Choississez une option</p>
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+          <small class="body__main__presentation__description__option__placeholder__content__small">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Choississez votre option de montage</p>
+          </small>
+        </div>
+        <section class="body__main__presentation__description__option__content">
+          <div class="body__main__presentation__description__option__content__first">
+            <p>Intallation windows 10 pro essai</p>
+            <p>+ 0€</p>
+          </div>
+          <div class="body__main__presentation__description__option__content__second">
+            <p>Activiation windows 10 pro</p>
+            <p>+ 30€</p>
+          </div>
+          <div class="body__main__presentation__description__option__content__third">
+            <p>Activiation windows 10 pro + Optimisation</p>
+            <p>+ 50€</p>
+          </div>
+        </section>
+      </section>
+
+
+      <section class="body__main__presentation__description__buy">
+        <form action="/shop/product/<%= data.getDesktop.desktop_id %>" method="post" class="body__main__presentation__description__buy__form">
+          <input type="hidden" value="" name="assembly" class="body__main__presentation__description__buy__form__option">
+          <input type="hidden" value="1" name="quantity" class="body__main__presentation__description__buy__form__quantity">
+          <section class="body__main__presentation__description__buy__form__quantity">
+            <i class="fa-solid fa-minus body__main__presentation__description__buy__form__quantity__minus"></i>
+            <p class="body__main__presentation__description__buy__form__quantity__placeholder">1</p>
+            <i class="fa-solid fa-plus body__main__presentation__description__buy__form__quantity__plus"></i>
+          </section>
+          <section class="body__main__presentation__description__buy__form__addPaner">
+            <input type="submit" value="Ajouter au panier">
+          </section>
+        </form>
+      </section>
+    </section>
+  </section>
+
+  <% if (data.getDesktop.category === 0) { %>
+  <section class="body__main__performances">
+    <h2 class="body__main__performances__h2">Performances en jeu</h2>
+    <small class="body__main__performances__small">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>Chaque jeu est minutieusement évalué en résolution 1080p.</p>
+    </small>
+    <section class="body__main__performances__manager">
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/fortnite.jpg" alt="fortnite.jpg">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.fortnite.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.fortnite.ultra %> FPS</p>
+        </div>
+      </section>
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/apex.jpg" alt="apex.jpg">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.apex.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.apex.ultra %> FPS</p>
+        </div>
+      </section>
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/valorant.png" alt="valorant.png">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.valorant.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.valorant.ultra %> FPS</p>
+        </div>
+      </section>
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/cyberpunk.jpg" alt="cyberpunk.jpg">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.cyberpunk.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.cyberpunk.ultra %> FPS</p>
+        </div>
+      </section>
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/battlefield.webp" alt="battlefield.webp">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.battlefield.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.battlefield.ultra %> FPS</p>
+        </div>
+      </section>
+      <section class="body__main__performances__manager__container">
+        <img src="/upload/rainbowsix.png" alt="rainbowsix.png">
+        <div class="body__main__performances__manager__container__high">
+          <p>Qualité Élévé</p>
+          <p><%= data.getDesktop.game.rainbowsix.high %> FPS</p>
+        </div>
+        <div class="body__main__performances__manager__container__ultra">
+          <p>Qualité Ultra</p>
+          <p><%= data.getDesktop.game.rainbowsix.ultra %> FPS</p>
+        </div>
+      </section>
+    </section>
+  </section>
+  <% } %>
+
+
+  <section class="body__main__components">
+    <h2 class="body__main__components__h2">Les composants</h2>
+    <small class="body__main__components__small">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>Retrouvez la liste des composants montés par nos soins dans votre ordinateur.</p>
+    </small>
+    <div class="body__main__components__list">
+      <table class="body__main__components__list__table">
+        <tbody>
+          <tr>
+            <td>Boitier Pc</td>
+            <td><%= data.getDesktop.config.case %></td>
+          </tr>
+          <tr>
+            <td>Processeur</td>
+            <td><%= data.getDesktop.config.processor %></td>
+          </tr>
+          <tr>
+            <td>Carte mère</td>
+            <td><%= data.getDesktop.config.motherboard %></td>
+          </tr>
+          <tr>
+            <td>Carte graphique</td>
+            <td><%= data.getDesktop.config.graphic %></td>
+          </tr>
+          <tr>
+            <td>Mémoire vive</td>
+            <td><%= data.getDesktop.config.ram %></td>
+          </tr>
+          <tr>
+            <td>Refroidissement</td>
+            <td><%= data.getDesktop.config.cooling %></td>
+          </tr>
+          <tr>
+            <td>Stockage</td>
+            <td><%= data.getDesktop.config.storage %></td>
+          </tr>
+          <tr>
+            <td>Alimentation</td>
+            <td><%= data.getDesktop.config.powerSupply %></td>
+          </tr>
+          <tr>
+            <td>Système d'exploitation</td>
+            <td><%= data.getDesktop.config.os %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="body__main__faq">
+    <h2 class="body__main__faq__h2">Questions fréquentes</h2>
+    <section class="body__main__faq__manager">
+      <section class="body__main__faq__manager__container">
+        <i class="fa-brands fa-windows"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Qu'est ce que la <span>version d'essai de Windows 10</span> ?</h3>
+          <p>La version d'essai de Windows 10 fonctionnera sans limites dans le temps. Vous avez toutes les mises à jour du système et tout le reste fonctionne parfaitement. Vous serez simplement invité à utiliser une clé d'activation au bout d'un mois.</p>
+        </div>
+      </section>
+      <section class="body__main__faq__manager__container">
+        <i class="fa-solid fa-filter"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Qu'elles sont les différences entre les <span>options de montages</span> ?</h3>
+          <p>OmniBetter propose différentes options de montage en fonction de l'utilisation spécifique de votre ordinateur ainsi que de vos contraintes budgétaires.</p>
+        </div>
+      </section>
+      <section class="body__main__faq__manager__container">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Quel est le <span>délai de livraison estimé</span> pour ma commande ?</h3>
+          <p>Nos délais de livraison sont actuellement estimés entre 7 et 10 jours. Cette plage a été soigneusement établie pour assurer la fiabilité et la qualité de chaque livraison.</p>
+        </div>
+      </section>
+      <section class="body__main__faq__manager__container">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Mon ordinateur est-il <span>couvert par une garantie</span> ?</h3>
+          <p>
+            Chaque ordinateur bénéficie d'une assurance de deux ans à compter de la date d'achat.</p>
+        </div>
+      </section>
+      <section class="body__main__faq__manager__container">
+        <i class="fa-solid fa-flag"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Dans quels pays <span>effectuez-vous des livraisons</span> ?</h3>
+          <p>Actuellement, nos services de livraison sont disponibles en France, en Belgique et en Suisse.<br>Si votre pays ne figure pas dans cette liste, veuillez contacter notre service d'assistance afin de discuter des options d'expédition disponibles.</p>
+        </div>
+      </section>
+      <section class="body__main__faq__manager__container">
+        <i class="fa-solid fa-wifi"></i>
+        <div class="body__main__faq__manager__container__content">
+          <h3>Est-ce que mon ordinateur est équipé de la <span>fonctionnalité Wi-Fi</span> ?</h3>
+          <p>La prise en charge de la connectivité Wi-Fi dépend de l'offre sélectionnée, et les détails spécifiques sont indiqués dans la configuration de l'ordinateur.</p>
+        </div>
+      </section>
+    </section>
+  </section>
+
+  <section class="body__main__bestseller">
+    <h2 class="body__main__bestseller__h2">Nos meilleurs ventes</h2>
+    <section class="swiperBestseller">
+      <section class="body__main__bestseller__manager">
+        <% data.allDesktop.forEach(desktop => { %>
+        <article class="body__main__bestseller__manager__container">
+          <a href="/shop/product/<%= desktop.id %>" class="body__main__bestseller__manager__container__article">
+            <div class="body__main__bestseller__manager__container__article__picture">
+              <img src="<%= desktop.image.link %>" alt="image.png">
+            </div>
+            <div class="body__main__bestseller__manager__container__article__title">
+              <h3><%= desktop.name %></h3>
+            </div>
+            <section class="body__main__bestseller__manager__container__article__configuration">
+              <div class="body__main__bestseller__manager__container__article__configuration__cpu">
+                <img src="/upload/icons8-processor-32.png" alt="icons8-processor-32.png">
+                <p><%= desktop.config.processor %></p>
+              </div>
+              <div class="body__main__bestseller__manager__container__article__configuration__gpu">
+                <img src="/upload/icons8-gpu-32.png" alt="icons8-gpu-32.png">
+                <p><%= desktop.config.graphic %></p>
+              </div>
+              <div class="body__main__bestseller__manager__container__article__configuration__ram">
+                <img src="/upload/icons8-ram-32.png" alt="icons8-ram-32.png">
+                <p><%= desktop.config.ram %></p>
+              </div>
+              <div class="body__main__bestseller__manager__container__article__configuration__ssd">
+                <img src="/upload/icons8-ssd-32.png" alt="icons8-ssd-32.png">
+                <p><%= desktop.config.storage %></p>
+              </div>
+            </section>
+            <section class="body__main__bestseller__manager__container__article__price">
+              <p><%= desktop.price %> €</p>
+              <span><%= desktop.category %></span>
+            </section>
+          </a>
+        </article>
+        <% }) %>
+      </section>
+      <div class="swiper-paginationBestseller swiper-pagination"></div>
+    </section>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="/shop/product.js"></script>
+</main>
+
+<%- include('../base/footer') %>
