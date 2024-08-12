@@ -1,6 +1,8 @@
 # Lancement du projet
 
-Suivez les commandes suivantes pour lancer le projet :
+Ajouter les clés d'api nécessaire dans le .env
+
+Puis executer les commandes suivantes pour lancer le projet :
 
 ```bash
 npm i
